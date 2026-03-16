@@ -1,0 +1,62 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Supervisor Review – Add Equipment Metadata</h2>
+
+{% for log in di.equipment_logs %}
+<div class="bg-white shadow rounded-lg p-4 mb-4">
+  <div class="flex justify-between items-center mb-3">
+    <h3 class="font-semibold text-lg">{{ log.equipment.name }}</h3>
+    <span class="text-sm px-2 py-1 rounded
+      {% if log.serviceability == 'S' %}
+        bg-green-200 text-green-800
+      {% else %}
+        bg-red-200 text-red-800
+      {% endif %}
+    ">
+      {{ log.serviceability }}
+    </span>
+  </div>
+
+  <p class="text-sm mb-3 text-gray-600">
+    Remarks: {{ log.remarks or "—" }}
+  </p>
+
+  <!-- Metadata Form -->
+  <form method="post" action="/di/metadata/{{ log.equipment.id }}"
+        class="grid grid-cols-2 gap-4">
+
+    <input type="number" step="any" name="pressure"
+           placeholder="Pressure"
+           class="border rounded px-3 py-2">
+
+    <input type="number" step="any" name="temperature"
+           placeholder="Temperature"
+           class="border rounded px-3 py-2">
+
+    <input type="number" step="any" name="voltage"
+           placeholder="Voltage"
+           class="border rounded px-3 py-2">
+
+    <input type="number" step="any" name="frequency"
+           placeholder="Frequency"
+           class="border rounded px-3 py-2">
+
+    <div class="col-span-2 text-right">
+      <button class="bg-blue-500 text-white px-4 py-2 rounded">
+        Save Metadata
+      </button>
+    </div>
+  </form>
+</div>
+{% endfor %}
+
+<div class="mt-6 text-right">
+  <form method="post" action="/di/workflow/approve/{{ di.id }}">
+    <button class="bg-green-600 text-white px-6 py-3 rounded-lg">
+      Submit to Reviewer
+    </button>
+  </form>
+</div>
+
+{% endblock %}

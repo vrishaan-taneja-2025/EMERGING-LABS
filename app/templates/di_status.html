@@ -1,0 +1,124 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Inspection Status</h2>
+
+<table class="w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2 text-center">ID</th>
+      <th class="px-4 py-2 text-center">Date</th>
+      <th class="px-4 py-2 text-center">Status</th>
+      <th class="px-4 py-2 text-center">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for di in di_list %}
+    <tr class="border-b">
+      <td class="px-4 py-2 text-center">{{ di.id }}</td>
+      <td class="px-4 py-2 text-center">{{ di.inspection_date }}</td>
+      <td class="px-4 py-2 text-center">
+        <span class="px-3 py-1 rounded text-sm
+          {% if di.status == 'completed' %}
+            bg-green-200 text-green-800
+          {% elif di.status == 'rejected' %}
+            bg-red-200 text-red-800
+          {% else %}
+            bg-yellow-200 text-yellow-800
+          {% endif %}
+        ">
+          {{ di.status }}
+        </span>
+      </td>
+
+      <td class="px-4 py-2 flex justify-center gap-4">
+        {% if di.status != "completed" and di.status != "rejected" %}
+          <button onclick="openApproveModal({{ di.id }})"
+                  class="text-green-600 hover:underline">
+            Approve
+          </button>
+
+          <button onclick="openRejectModal({{ di.id }})"
+                  class="text-red-600 hover:underline">
+            Reject
+          </button>
+        {% else %}
+          —
+        {% endif %}
+      </td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+<!-- ================= APPROVE MODAL ================= -->
+<div id="approve-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded p-6 w-96">
+    <h3 class="text-lg font-bold mb-4">Approve Inspection</h3>
+
+    <form id="approve-form" method="post">
+      <textarea name="comments"
+                class="border w-full p-2 rounded mb-4"
+                placeholder="Approval remarks (optional)"></textarea>
+
+      <div class="flex justify-end gap-2">
+        <button type="button"
+                onclick="closeModal('approve-modal')"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-green-600 text-white px-4 py-2 rounded">
+          Approve
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ================= REJECT MODAL ================= -->
+<div id="reject-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded p-6 w-96">
+    <h3 class="text-lg font-bold mb-4">Reject Inspection</h3>
+
+    <form id="reject-form" method="post">
+      <textarea name="comments"
+                required
+                class="border w-full p-2 rounded mb-4"
+                placeholder="Reason for rejection"></textarea>
+
+      <div class="flex justify-end gap-2">
+        <button type="button"
+                onclick="closeModal('reject-modal')"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-red-600 text-white px-4 py-2 rounded">
+          Reject
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openApproveModal(diId) {
+  document.getElementById("approve-form").action =
+    `/inspection/approve/${diId}`;
+  document.getElementById("approve-modal").classList.remove("hidden");
+}
+
+function openRejectModal(diId) {
+  document.getElementById("reject-form").action =
+    `/inspection/reject/${diId}`;
+  document.getElementById("reject-modal").classList.remove("hidden");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+</script>
+
+{% endblock %}

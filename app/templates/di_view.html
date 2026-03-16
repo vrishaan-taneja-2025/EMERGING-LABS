@@ -1,0 +1,20 @@
+{% for log in logs %}
+<div class="bg-white shadow rounded p-4 mb-4">
+  <h3 class="font-semibold">{{ log.equipment.name }}</h3>
+  <p>Serviceability: {{ log.serviceability }}</p>
+  <p>Remarks: {{ log.remarks or "-" }}</p>
+
+  {% if user.role.name == "supervisor" %}
+  <form method="post" action="/di/metadata/{{ log.equipment_id }}"
+        class="grid grid-cols-4 gap-2 mt-4">
+    <input name="pressure" placeholder="Pressure" class="border p-2">
+    <input name="temperature" placeholder="Temperature" class="border p-2">
+    <input name="voltage" placeholder="Voltage" class="border p-2">
+    <input name="frequency" placeholder="Frequency" class="border p-2">
+    <button class="col-span-4 bg-blue-500 text-white py-2 rounded">
+      Save Metadata
+    </button>
+  </form>
+  {% endif %}
+</div>
+{% endfor %}

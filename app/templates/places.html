@@ -1,0 +1,118 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-bold">Places</h2>
+  <!-- Button to open Create Modal -->
+  <button onclick="openModal('create-place-modal')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      + New Place
+  </button>
+</div>
+
+<!-- Search -->
+<form method="get" class="mb-4">
+  <input type="text" name="search" value="{{ search }}" placeholder="Search..." class="border rounded px-2 py-1">
+  <button type="submit" class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">Search</button>
+</form>
+
+<!-- Places Table -->
+<table class="min-w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Name</th>
+      <th class="px-4 py-2">Description</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for place in places %}
+    <tr class="border-b">
+      <td class="px-4 py-2">{{ place.id }}</td>
+      <td class="px-4 py-2">{{ place.name }}</td>
+      <td class="px-4 py-2">{{ place.description }}</td>
+      <td class="px-4 py-2 space-x-2">
+        <button onclick="openViewModal({{ place.id }}, '{{ place.name }}', '{{ place.description }}')" class="text-green-500 hover:text-green-700">👁️</button>
+        <button onclick="openEditModal({{ place.id }}, '{{ place.name }}', '{{ place.description }}')" class="text-blue-500 hover:text-blue-700">✏️</button>
+        <a href="/places/delete/{{ place.id }}" class="text-red-500 hover:text-red-700">🗑️</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- Pagination -->
+<div class="mt-4 flex justify-center space-x-2">
+  {% for p in range(1, (total // per_page) + 2) %}
+      <a href="?page={{ p }}&search={{ search }}" class="px-3 py-1 rounded {% if p==page %}bg-blue-500 text-white{% else %}bg-gray-200{% endif %}">{{ p }}</a>
+  {% endfor %}
+</div>
+
+<!-- Modals -->
+
+<!-- Create Modal -->
+<div id="create-place-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96">
+    <h3 class="text-xl font-bold mb-4">New Place</h3>
+    <form method="post" action="/places/create">
+      <input type="text" name="name" placeholder="Place Name" required class="border rounded px-2 py-1 w-full mb-2">
+      <input type="text" name="description" placeholder="Description" class="border rounded px-2 py-1 w-full mb-4">
+      <div class="flex justify-end space-x-2">
+        <button type="button" onclick="closeModal('create-place-modal')" class="px-4 py-2 border rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- View Modal -->
+<div id="view-place-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96">
+    <h3 class="text-xl font-bold mb-4">View Place</h3>
+    <p>ID: <span id="view-place-id"></span></p>
+    <p>Name: <span id="view-place-name"></span></p>
+    <p>Description: <span id="view-place-description"></span></p>
+    <div class="flex justify-end mt-4">
+      <button onclick="closeModal('view-place-modal')" class="px-4 py-2 border rounded">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="edit-place-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96">
+    <h3 class="text-xl font-bold mb-4">Edit Place</h3>
+    <form id="edit-place-form" method="post">
+      <input type="text" name="name" id="edit-place-name" placeholder="Place Name" required class="border rounded px-2 py-1 w-full mb-2">
+      <input type="text" name="description" id="edit-place-description" placeholder="Description" class="border rounded px-2 py-1 w-full mb-4">
+      <div class="flex justify-end space-x-2">
+        <button type="button" onclick="closeModal('edit-place-modal')" class="px-4 py-2 border rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Save</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function openModal(modalId) {
+    document.getElementById(modalId).classList.remove('hidden');
+  }
+
+  function closeModal(modalId) {
+    document.getElementById(modalId).classList.add('hidden');
+  }
+
+  function openViewModal(id, name, description) {
+    document.getElementById('view-place-id').innerText = id;
+    document.getElementById('view-place-name').innerText = name;
+    document.getElementById('view-place-description').innerText = description;
+    openModal('view-place-modal');
+  }
+
+  function openEditModal(id, name, description) {
+    document.getElementById('edit-place-name').value = name;
+    document.getElementById('edit-place-description').value = description;
+    document.getElementById('edit-place-form').action = `/places/edit/${id}`;
+    openModal('edit-place-modal');
+  }
+</script>
+{% endblock %}

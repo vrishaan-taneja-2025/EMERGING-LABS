@@ -1,0 +1,150 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-6">
+  <h2 class="text-2xl font-bold">Equipments</h2>
+  <button onclick="openModal('create-equipment-modal')" 
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+      + New Equipment
+  </button>
+</div>
+
+<!-- CREATE / EDIT MODAL -->
+<div id="create-equipment-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-[650px] max-w-full">
+    <h3 class="text-xl font-bold mb-6">Create Equipment</h3>
+    <form id="equipment-form" method="post" action="/equipments/create" class="space-y-4">
+      
+      <!-- Row 1: Name + Equipment Type -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="name">Equipment Name</label>
+          <input type="text" name="name" id="name" placeholder="Enter name" 
+                 required class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="equipment_type_id">Equipment Type</label>
+          <select name="equipment_type_id" id="equipment_type_id" required
+                  class="border rounded px-3 py-2 w-full">
+            <option value="">Select Type</option>
+            {% for etype in equipment_types %}
+              <option value="{{ etype.id }}">{{ etype.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 2: Place + Status -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="place_id">Equipment Place</label>
+          <select name="place_id" id="place_id" required
+                  class="border rounded px-3 py-2 w-full">
+            <option value="">Select Place</option>
+            {% for place in places %}
+              <option value="{{ place.id }}">{{ place.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="status">Status</label>
+          <select name="status" id="status" required class="border rounded px-3 py-2 w-full">
+            <option value="On">On</option>
+            <option value="Off">Off</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 3: Serviceability + Remarks -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="serviceability">Serviceability</label>
+          <select name="serviceability" id="serviceability" required class="border rounded px-3 py-2 w-full">
+            <option value="S">Serviceable</option>
+            <option value="US">Unserviceable</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="remarks">Remarks</label>
+          <input type="text" name="remarks" id="remarks" placeholder="Enter remarks"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+      </div>
+
+      <!-- Row 4: Optional metadata -->
+      <div class="grid grid-cols-3 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="pressure">Pressure</label>
+          <input type="number" step="any" name="pressure" id="pressure" placeholder="Pressure"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="temperature">Temperature</label>
+          <input type="number" step="any" name="temperature" id="temperature" placeholder="Temperature"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+        <div>
+          <label class="block text-sm font-medium mb-1" for="voltage">Voltage</label>
+          <input type="number" step="any" name="voltage" id="voltage" placeholder="Voltage"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1" for="frequency">Frequency</label>
+          <input type="number" step="any" name="frequency" id="frequency" placeholder="Frequency"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-end mt-4 space-x-2">
+        <button type="button" onclick="closeModal('create-equipment-modal')"
+                class="px-4 py-2 border rounded hover:bg-gray-100">Cancel</button>
+        <button type="submit" class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!--  Edit Modal  -->
+
+{% comment %} <div id="edit-equipment-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white rounded-lg p-6 w-96">
+    <h3 class="text-xl font-bold mb-4">Edit Equipment</h3>
+    <form id="edit-equipment-form" method="post">
+      <input type="text" name="name" id="edit-name" placeholder="Equipment Name" required class="border rounded px-2 py-1 w-full mb-2">
+      <input type="text" name="equipment_type_name" id="edit-equipment-type" placeholder="Equipment Type" required class="border rounded px-2 py-1 w-full mb-2">
+      <input type="number" name="place_id" id="edit-place-id" placeholder="Place ID" required class="border rounded px-2 py-1 w-full mb-2">
+      <select name="status" id="edit-status" required class="border rounded px-2 py-1 w-full mb-2">
+        <option value="On">On</option>
+        <option value="Off">Off</option>
+      </select>
+      <select name="serviceability" id="edit-serviceability" required class="border rounded px-2 py-1 w-full mb-2">
+        <option value="S">Serviceable</option>
+        <option value="US">Unserviceable</option>
+      </select>
+      <input type="text" name="remarks" id="edit-remarks" placeholder="Remarks" class="border rounded px-2 py-1 w-full mb-2">
+      <input type="number" step="any" name="pressure" id="edit-pressure" placeholder="Pressure" class="border rounded px-2 py-1 w-full mb-2">
+      <input type="number" step="any" name="temperature" id="edit-temperature" placeholder="Temperature" class="border rounded px-2 py-1 w-full mb-2">
+      <input type="number" step="any" name="voltage" id="edit-voltage" placeholder="Voltage" class="border rounded px-2 py-1 w-full mb-2">
+      <input type="number" step="any" name="frequency" id="edit-frequency" placeholder="Frequency" class="border rounded px-2 py-1 w-full mb-4">
+
+      <div class="flex justify-end space-x-2">
+        <button type="button" onclick="closeModal('edit-equipment-modal')" class="px-4 py-2 border rounded">Cancel</button>
+        <button type="submit" class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">Update</button>
+      </div>
+    </form>
+  </div>
+</div> {% endcomment %}
+
+
+<script>
+function openModal(id){ document.getElementById(id).classList.remove("hidden"); }
+function closeModal(id){ document.getElementById(id).classList.add("hidden"); }
+</script>
+
+{% endblock %}

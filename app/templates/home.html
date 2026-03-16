@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="max-w-5xl mx-auto mt-12 grid grid-cols-2 gap-10">
+  <div>
+    <h1 class="text-4xl font-bold mb-4">
+      Datacenter Inspection & Monitoring
+    </h1>
+    <p class="text-gray-600 mb-6">
+      Ensure uptime, safety, and compliance across all
+      critical datacenter infrastructure.
+    </p>
+
+    <a href="/login"
+       class="bg-blue-600 text-white px-6 py-3 rounded-lg shadow">
+      Login to System
+    </a>
+  </div>
+
+  <div class="bg-white p-8 rounded-xl shadow">
+    <ul class="space-y-3 text-gray-700">
+      <li>✔ Daily Inspection Workflow</li>
+      <li>✔ Equipment Serviceability Tracking</li>
+      <li>✔ Role-based Approval</li>
+      <li>✔ Audit-ready Reports</li>
+    </ul>
+  </div>
+</div>
+
+{% endblock %}

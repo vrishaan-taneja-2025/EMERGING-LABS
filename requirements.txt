@@ -1,0 +1,11 @@
+
+fastapi
+uvicorn
+jinja2
+python-multipart
+sqlalchemy
+psycopg2-binary
+alembic
+passlib[bcrypt]
+python-jose
+weasyprint

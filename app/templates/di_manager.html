@@ -1,0 +1,28 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Manager Approval</h2>
+
+{% for log in di.equipment_logs %}
+<div class="bg-white shadow rounded-lg p-4 mb-3">
+  <h3 class="font-semibold">{{ log.equipment.name }}</h3>
+  <p class="text-sm text-gray-600">
+    Serviceability: {{ log.serviceability }}
+  </p>
+</div>
+{% endfor %}
+
+<form method="post" action="/di/workflow/manager/approve/{{ di.id }}"
+      class="bg-white shadow rounded-lg p-4 mt-6">
+  <label class="block font-medium mb-2">Manager Remarks</label>
+  <textarea name="comments"
+            class="border w-full p-3 rounded mb-4"></textarea>
+
+  <div class="text-right">
+    <button class="bg-blue-600 text-white px-6 py-2 rounded">
+      Final Approve
+    </button>
+  </div>
+</form>
+
+{% endblock %}

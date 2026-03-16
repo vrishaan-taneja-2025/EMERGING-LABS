@@ -1,0 +1,150 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-bold">Users</h2>
+
+  <!-- NEW USER BUTTON -->
+  <button onclick="openCreateModal()"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    + New User
+  </button>
+</div>
+
+<form method="get" class="mb-4">
+  <input name="search" value="{{ search }}" placeholder="Search username"
+         class="border rounded px-2 py-1">
+  <button class="bg-blue-500 text-white px-3 py-1 rounded">Search</button>
+</form>
+
+<table class="min-w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Username</th>
+      <th class="px-4 py-2">Role</th>
+      <th class="px-4 py-2">Active</th>
+      <th class="px-4 py-2">Created</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for u in users %}
+    <tr class="border-b">
+      <td class="px-4 py-2">{{ u.id }}</td>
+      <td class="px-4 py-2">{{ u.username }}</td>
+      <td class="px-4 py-2">{{ u.role.name if u.role else "-" }}</td>
+      <td class="px-4 py-2">
+        {% if u.is_active %}✅{% else %}❌{% endif %}
+      </td>
+      <td class="px-4 py-2">{{ u.created_at.strftime("%Y-%m-%d") }}</td>
+      <td class="px-4 py-2 space-x-2">
+        <button onclick="openEditModal({{ u.id }}, {{ u.role_id or 0 }}, {{ u.is_active | lower }})"
+                class="text-blue-500">✏️</button>
+        <a href="/users/delete/{{ u.id }}" class="text-red-500">🗑️</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- ===================== -->
+<!-- CREATE USER MODAL -->
+<!-- ===================== -->
+<div id="create-user-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded-lg w-[420px]">
+    <h3 class="text-xl font-bold mb-4">Create New User</h3>
+
+    <form method="post" action="/users/create" class="space-y-4">
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Username</label>
+        <input type="text" name="username" required
+               class="border rounded w-full px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Password</label>
+        <input type="password" name="password" required
+               class="border rounded w-full px-3 py-2">
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Role</label>
+        <select name="role_id" required
+                class="border rounded w-full px-3 py-2">
+          <option value="">Select Role</option>
+          {% for role in roles %}
+            <option value="{{ role.id }}">{{ role.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="flex justify-end space-x-2 pt-2">
+        <button type="button" onclick="closeCreateModal()"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">
+          Create
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ===================== -->
+<!-- EDIT USER MODAL -->
+<!-- ===================== -->
+<div id="edit-user-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-6 rounded w-96">
+    <h3 class="text-xl font-bold mb-4">Edit User</h3>
+
+    <form id="edit-user-form" method="post">
+      <select name="role_id" id="edit-role"
+              class="border w-full mb-4 px-3 py-2 rounded">
+        {% for role in roles %}
+          <option value="{{ role.id }}">{{ role.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label class="flex items-center mb-4">
+        <input type="checkbox" name="is_active" id="edit-active" class="mr-2">
+        Active
+      </label>
+
+      <div class="flex justify-end space-x-2">
+        <button type="button" onclick="closeEditModal()"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded">
+          Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openCreateModal(){
+  document.getElementById("create-user-modal").classList.remove("hidden");
+}
+function closeCreateModal(){
+  document.getElementById("create-user-modal").classList.add("hidden");
+}
+
+function openEditModal(id, roleId, isActive){
+  document.getElementById("edit-user-form").action = `/users/edit/${id}`;
+  document.getElementById("edit-role").value = roleId;
+  document.getElementById("edit-active").checked = isActive;
+  document.getElementById("edit-user-modal").classList.remove("hidden");
+}
+function closeEditModal(){
+  document.getElementById("edit-user-modal").classList.add("hidden");
+}
+</script>
+
+{% endblock %}

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | DC Inspection System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-slate-900 flex items-center justify-center min-h-screen">
+
+<div class="absolute top-1/4 text-center">
+  <h1 id="typewriter"
+      class="text-6xl font-extrabold text-white tracking-wide">
+  </h1>
+</div>
+
+<div class="bg-white rounded-xl shadow-xl p-8 w-full max-w-md z-10">
+
+  {% if request.query_params.get("error") == "invalid_credentials" %}
+  <div class="bg-red-100 text-red-700 px-4 py-2 rounded mb-4">
+    Invalid username or password
+  </div>
+  {% endif %}
+
+  <form method="post" action="/auth/login" class="space-y-4">
+    <input name="username"
+           placeholder="Username"
+           class="w-full border rounded px-4 py-2">
+
+    <input type="password" name="password"
+           placeholder="Password"
+           class="w-full border rounded px-4 py-2">
+
+    <button class="w-full bg-blue-600 text-white py-2 rounded-lg">
+      Login
+    </button>
+  </form>
+
+  <!-- Register link -->
+  <div class="text-center mt-4 text-sm">
+    <span class="text-gray-500">New user?</span>
+    <a href="/register" class="text-blue-600 font-semibold hover:underline">
+      Register here
+    </a>
+  </div>
+
+</div>
+
+<script>
+const text = "DATACENTER INSPECTION SYSTEM";
+let i = 0;
+function typeWriter() {
+  if (i < text.length) {
+    document.getElementById("typewriter").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typeWriter, 80);
+  }
+}
+typeWriter();
+</script>
+
+</body>
+</html>

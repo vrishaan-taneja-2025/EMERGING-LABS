@@ -1,0 +1,22 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Register New User</h2>
+
+<form method="post" class="bg-white p-6 rounded shadow w-1/2 space-y-4">
+  <input name="username" placeholder="Username" class="border p-2 w-full">
+  <input type="password" name="password" placeholder="Password" class="border p-2 w-full">
+
+  <select name="role" class="border p-2 w-full">
+    <option value="user">User</option>
+    <option value="supervisor">Supervisor</option>
+    <option value="reviewer">Reviewer</option>
+    <option value="manager">Manager</option>
+  </select>
+
+  <button class="bg-green-600 text-white px-6 py-2 rounded">
+    Create User
+  </button>
+</form>
+
+{% endblock %}

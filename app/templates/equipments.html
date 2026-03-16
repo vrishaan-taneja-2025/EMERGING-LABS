@@ -1,0 +1,268 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-bold">Equipments</h2>
+  <button onclick="openCreateModal()"
+          class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+    + New Equipment
+  </button>
+</div>
+
+<!-- Search -->
+<form method="get" class="mb-4">
+  <input type="text" name="search" value="{{ search }}"
+         placeholder="Search..."
+         class="border rounded px-2 py-1">
+  <button type="submit"
+          class="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
+    Search
+  </button>
+</form>
+
+<!-- TABLE -->
+<table class="min-w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2 text-left">ID</th>
+      <th class="px-4 py-2 text-left">Name</th>
+      <th class="px-4 py-2 text-left">Location</th>
+      <th class="px-4 py-2 text-left">Status</th>
+      <th class="px-4 py-2 text-left">Serviceability</th>
+      <th class="px-4 py-2 text-left">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for eq in equipments %}
+    <tr class="border-b">
+      <td class="px-4 py-2">{{ eq.id }}</td>
+      <td class="px-4 py-2">{{ eq.name }}</td>
+      <td class="px-4 py-2">{{ eq.place_name }}</td>
+      <td class="px-4 py-2">{{ eq.status }}</td>
+      <td class="px-4 py-2">{{ eq.serviceability }}</td>
+      <td class="px-4 py-2 flex justify-center space-x-2">
+        <button type="button"
+                onclick="openViewModal({{ eq.id }})"
+                class="text-green-600 hover:text-green-800">👁️</button>
+
+        <button type="button"
+                onclick="openEditModal({{ eq.id }})"
+                class="text-blue-600 hover:text-blue-800">✏️</button>
+
+        <a href="/equipments/delete/{{ eq.id }}"
+           class="text-red-600 hover:text-red-800">🗑️</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- CREATE / EDIT / VIEW MODAL -->
+<div id="create-equipment-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+
+  <div class="bg-white rounded-lg p-6 w-[650px] max-w-full">
+    <h3 id="equipment-modal-title"
+        class="text-xl font-bold mb-6">
+      Create Equipment
+    </h3>
+
+    <form id="equipment-form"
+          method="post"
+          action="/equipments/create"
+          class="space-y-4">
+
+      <!-- Row 1 -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Equipment Name</label>
+          <input id="name" name="name" required
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Equipment Type</label>
+          <select id="equipment_type_name"
+                  name="equipment_type_name"
+                  required
+                  onchange="toggleNewType(this.value)"
+                  class="border rounded px-3 py-2 w-full">
+            <option value="">Select Type</option>
+            {% for etype in equipment_types %}
+              <option value="{{ etype.name }}">{{ etype.name }}</option>
+            {% endfor %}
+            <option value="__other__">Other</option>
+          </select>
+
+          <input id="new_equipment_type"
+                 name="new_equipment_type"
+                 placeholder="Enter new equipment type"
+                 class="border rounded px-3 py-2 w-full mt-2 hidden">
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Place</label>
+          <select id="place_id" name="place_id" required
+                  class="border rounded px-3 py-2 w-full">
+            <option value="">Select Place</option>
+            {% for place in places %}
+              <option value="{{ place.id }}">{{ place.name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Status</label>
+          <select id="status" name="status"
+                  class="border rounded px-3 py-2 w-full">
+            <option value="On">On</option>
+            <option value="Off">Off</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Row 3 -->
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-sm font-medium mb-1">Serviceability</label>
+          <select id="serviceability" name="serviceability"
+                  class="border rounded px-3 py-2 w-full">
+            <option value="S">Serviceable</option>
+            <option value="US">Unserviceable</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-sm font-medium mb-1">Remarks</label>
+          <input id="remarks" name="remarks"
+                 class="border rounded px-3 py-2 w-full">
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex justify-start mt-4 space-x-2">
+        <button type="button"
+                onclick="closeModal('create-equipment-modal')"
+                class="px-4 py-2 border rounded">
+          Cancel
+        </button>
+
+        <button id="equipment-save-btn"
+                type="submit"
+                class="px-6 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+          Save
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- SCRIPTS -->
+<script>
+function openModal(id) {
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+
+function setFormReadonly(readonly) {
+  document.querySelectorAll(
+    "#equipment-form input, #equipment-form select"
+  ).forEach(el => {
+    readonly ? el.setAttribute("disabled", true)
+             : el.removeAttribute("disabled");
+  });
+}
+
+function toggleNewType(val) {
+  const input = document.getElementById("new_equipment_type");
+  if (val === "__other__") {
+    input.classList.remove("hidden");
+    input.required = true;
+  } else {
+    input.classList.add("hidden");
+    input.required = false;
+    input.value = "";
+  }
+}
+
+/* CREATE */
+function openCreateModal() {
+  const form = document.getElementById("equipment-form");
+  form.reset();
+  form.action = "/equipments/create";
+
+  setFormReadonly(false);
+  document.getElementById("equipment-modal-title").innerText = "Create Equipment";
+  document.getElementById("equipment-save-btn").classList.remove("hidden");
+
+  openModal("create-equipment-modal");
+}
+
+/* VIEW */
+function openViewModal(id) {
+  fetch(`/equipments/get/${id}`)
+    .then(r => r.json())
+    .then(d => {
+      fillForm(d);
+      setFormReadonly(true);
+      document.getElementById("equipment-modal-title").innerText = "View Equipment";
+      document.getElementById("equipment-save-btn").classList.add("hidden");
+      openModal("create-equipment-modal");
+    });
+}
+
+/* EDIT */
+function openEditModal(id) {
+  fetch(`/equipments/get/${id}`)
+    .then(r => r.json())
+    .then(d => {
+      fillForm(d);
+      setFormReadonly(false);
+      document.getElementById("equipment-modal-title").innerText = "Edit Equipment";
+      document.getElementById("equipment-save-btn").classList.remove("hidden");
+      document.getElementById("equipment-form").action =
+        `/equipments/edit/${id}`;
+      openModal("create-equipment-modal");
+    });
+}
+
+function fillForm(d) {
+  // Text inputs
+  document.getElementById("name").value = d.name;
+  document.getElementById("remarks").value = d.remarks || "";
+
+  // Place / status / serviceability (always exist)
+  document.getElementById("place_id").value = d.place_id;
+  document.getElementById("status").value = d.status;
+  document.getElementById("serviceability").value = d.serviceability;
+
+  // Equipment type (SPECIAL CASE)
+  const typeSelect = document.getElementById("equipment_type_name");
+  const newTypeInput = document.getElementById("new_equipment_type");
+
+  const optionExists = [...typeSelect.options]
+    .some(opt => opt.value === d.equipment_type_name);
+
+  if (optionExists) {
+    typeSelect.value = d.equipment_type_name;
+    newTypeInput.classList.add("hidden");
+    newTypeInput.value = "";
+    newTypeInput.required = false;
+  } else {
+    typeSelect.value = "__other__";
+    newTypeInput.classList.remove("hidden");
+    newTypeInput.value = d.equipment_type_name;
+    newTypeInput.required = true;
+  }
+}
+
+</script>
+
+{% endblock %}

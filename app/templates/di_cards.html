@@ -1,0 +1,27 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+<h2 class="text-2xl font-bold mb-4">Daily Inspection</h2>
+
+<div class="grid grid-cols-3 gap-4">
+{% for e in equipments %}
+<div class="bg-white p-4 rounded shadow">
+  <h3 class="font-semibold">{{ e.name }}</h3>
+  <p>{{ e.place.name }}</p>
+
+  {% if user.role.name == "supervisor" %}
+  <form method="post" action="/inspection/metadata/{{ e.id }}">
+    <input name="pressure" placeholder="Pressure" class="border p-1 w-full mb-1">
+    <input name="temperature" placeholder="Temperature" class="border p-1 w-full mb-1">
+    <input name="voltage" placeholder="Voltage" class="border p-1 w-full mb-1">
+    <input name="frequency" placeholder="Frequency" class="border p-1 w-full mb-1">
+    <button class="bg-blue-500 text-white px-2 py-1 rounded w-full">Save</button>
+  </form>
+  {% endif %}
+</div>
+{% endfor %}
+</div>
+
+<form method="post" action="/inspection/di" class="mt-6">
+  <button class="bg-green-600 text-white px-6 py-2 rounded">Submit DI</button>
+</form>
+{% endblock %}

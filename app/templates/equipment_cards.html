@@ -1,0 +1,43 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<h2 class="text-2xl font-bold mb-6">Equipments</h2>
+
+<div class="grid grid-cols-3 gap-6">
+{% for eq in equipments %}
+  <div class="bg-white shadow rounded p-4">
+    <h3 class="font-semibold text-lg">{{ eq.name }}</h3>
+    <p class="text-sm text-gray-600">
+      {{ eq.place.name if eq.place else "" }} |
+      {{ eq.equipment_type.name if eq.equipment_type else "" }}
+    </p>
+
+    {% set meta = eq.metadata_entries[0] if eq.metadata_entries else None %}
+
+    {% if meta %}
+      <!-- SHOW METADATA -->
+      <div class="mt-3 text-sm">
+        <p>Pressure: {{ meta.pressure }}</p>
+        <p>Temperature: {{ meta.temperature }}</p>
+        <p>Voltage: {{ meta.voltage }}</p>
+        <p>Frequency: {{ meta.frequency }}</p>
+      </div>
+    {% else %}
+      <!-- ADD METADATA (SUPERVISOR ONLY) -->
+      {% if user.role.name.lower() == "supervisor" %}
+      <form method="post" action="/inspection/metadata/{{ eq.id }}" class="mt-3 space-y-2">
+        <input name="pressure" placeholder="Pressure" class="border p-1 w-full">
+        <input name="temperature" placeholder="Temperature" class="border p-1 w-full">
+        <input name="voltage" placeholder="Voltage" class="border p-1 w-full">
+        <input name="frequency" placeholder="Frequency" class="border p-1 w-full">
+        <button class="bg-blue-500 text-white px-3 py-1 rounded w-full">
+          Save Metadata
+        </button>
+      </form>
+      {% endif %}
+    {% endif %}
+  </div>
+{% endfor %}
+</div>
+
+{% endblock %}

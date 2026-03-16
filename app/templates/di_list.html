@@ -1,0 +1,133 @@
+{% extends "layout_dashboard.html" %}
+{% block content %}
+
+<div class="flex justify-between items-center mb-4">
+  <h2 class="text-2xl font-bold">Daily Inspections</h2>
+  <a href="/di/form"
+     class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+     + New DI
+  </a>
+</div>
+
+<table class="min-w-full bg-white shadow rounded">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="px-4 py-2">ID</th>
+      <th class="px-4 py-2">Date</th>
+      <th class="px-4 py-2">Created By</th>
+      <th class="px-4 py-2">Status</th>
+      <th class="px-4 py-2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for di in di_list %}
+    <tr class="border-b">
+      <td class="px-4 py-2">{{ di.id }}</td>
+      <td class="px-4 py-2">{{ di.inspection_date }}</td>
+      <td class="px-4 py-2">{{ di.user.username }}</td>
+      <td class="px-4 py-2">
+        <span class="px-2 py-1 rounded text-sm
+          {% if di.status == 'completed' %}
+            bg-green-200 text-green-800
+          {% elif di.status == 'rejected' %}
+            bg-red-200 text-red-800
+          {% else %}
+            bg-yellow-200 text-yellow-800
+          {% endif %}
+        ">
+          {{ di.status }}
+        </span>
+      </td>
+
+      <td class="px-4 py-2 space-x-2">
+        <!-- Approve -->
+        {% if di.status != 'completed' and di.status != 'rejected' %}
+        <button onclick="openApproveModal({{ di.id }})"
+                class="text-green-600 hover:underline">
+          Approve
+        </button>
+
+        <button onclick="openRejectModal({{ di.id }})"
+                class="text-red-600 hover:underline">
+          Reject
+        </button>
+        {% else %}
+          —
+        {% endif %}
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<!-- APPROVE MODAL -->
+<div id="approve-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white p-6 rounded w-96">
+    <h3 class="text-xl font-bold mb-4">Approve DI</h3>
+
+    <form id="approve-form" method="post">
+      <textarea name="comments"
+                class="border w-full p-2 rounded mb-4"
+                placeholder="Comments (optional)"></textarea>
+
+      <div class="flex justify-end space-x-2">
+        <button type="button"
+                onclick="closeModal('approve-modal')"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-green-500 text-white px-4 py-2 rounded">
+          Approve
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- REJECT MODAL -->
+<div id="reject-modal"
+     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+  <div class="bg-white p-6 rounded w-96">
+    <h3 class="text-xl font-bold mb-4">Reject DI</h3>
+
+    <form id="reject-form" method="post">
+      <textarea name="comments"
+                required
+                class="border w-full p-2 rounded mb-4"
+                placeholder="Reason for rejection"></textarea>
+
+      <div class="flex justify-end space-x-2">
+        <button type="button"
+                onclick="closeModal('reject-modal')"
+                class="border px-4 py-2 rounded">
+          Cancel
+        </button>
+        <button class="bg-red-500 text-white px-4 py-2 rounded">
+          Reject
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+function openApproveModal(diId) {
+  document.getElementById("approve-form").action =
+    `/di/workflow/approve/${diId}`;
+  document.getElementById("approve-modal").classList.remove("hidden");
+}
+
+function openRejectModal(diId) {
+  document.getElementById("reject-form").action =
+    `/di/workflow/reject/${diId}`;
+  document.getElementById("reject-modal").classList.remove("hidden");
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.add("hidden");
+}
+</script>
+
+{% endblock %}
