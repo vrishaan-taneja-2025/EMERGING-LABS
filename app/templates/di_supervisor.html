@@ -23,7 +23,7 @@
   </p>
 
   <!-- Metadata Form -->
-  <form method="post" action="/di/metadata/{{ log.equipment.id }}"
+  <form method="post" action="/di/supervisor/metadata/{{ log.equipment.id }}"
         class="grid grid-cols-2 gap-4">
 
     <input type="number" step="any" name="pressure"
@@ -52,7 +52,7 @@
 {% endfor %}
 
 <div class="mt-6 text-right">
-  <form method="post" action="/di/workflow/approve/{{ di.id }}">
+  <form method="post" action="/di/workflow/supervisor/approve/{{ di.id }}">
     <button class="bg-green-600 text-white px-6 py-3 rounded-lg">
       Submit to Reviewer
     </button>

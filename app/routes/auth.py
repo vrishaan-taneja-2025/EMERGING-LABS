@@ -2,6 +2,7 @@
 from app.core.security import create_token, verify_password, hash_password
 from fastapi.responses import RedirectResponse
 from fastapi import APIRouter, Depends, Form, HTTPException, status, Response
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
@@ -93,7 +94,22 @@ def register_user(
 
     # 2️⃣ Hash password
     hashed_password = hash_password(password) 
-    role_user = db.query(Role).filter(Role.name=="user").first()
+    role_user = (
+        db.query(Role)
+        .filter(func.lower(Role.name) == "user")
+        .first()
+    )
+    if not role_user:
+        response = RedirectResponse(
+            url="/register",
+            status_code=status.HTTP_302_FOUND
+        )
+        response.set_cookie(
+            key="flash_error",
+            value="Default user role is not configured",
+            max_age=5
+        )
+        return response
     # 3️⃣ Create user (default role = user)
     user = User(
         username=username,

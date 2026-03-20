@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: proj1-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: project
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d project"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: proj1-app
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/project
+      TELEMETRY_API_KEY: local-telemetry-key
+    ports:
+      - "8000:8000"
+
+  telemetry-publisher:
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry
+    container_name: proj1-telemetry-publisher
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_started
+    environment:
+      TELEMETRY_BASE_URL: http://app:8000
+      TELEMETRY_API_KEY: local-telemetry-key
+      TELEMETRY_PUBLISH_INTERVAL: "1"
+
+volumes:
+  postgres_data:

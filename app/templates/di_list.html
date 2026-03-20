@@ -3,10 +3,12 @@
 
 <div class="flex justify-between items-center mb-4">
   <h2 class="text-2xl font-bold">Daily Inspections</h2>
+  {% if user.role and user.role.name|lower == "user" %}
   <a href="/di/form"
      class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
      + New DI
   </a>
+  {% endif %}
 </div>
 
 <table class="min-w-full bg-white shadow rounded">
@@ -42,8 +44,12 @@
 
       <td class="px-4 py-2 space-x-2">
         <!-- Approve -->
-        {% if di.status != 'completed' and di.status != 'rejected' %}
-        <button onclick="openApproveModal({{ di.id }})"
+        {% set role_name = user.role.name|lower if user.role else "" %}
+        {% set can_approve = (di.status == "submitted" and role_name == "supervisor")
+                             or (di.status == "supervisor_approved" and role_name == "reviewer")
+                             or (di.status == "reviewer_approved" and role_name == "manager") %}
+        {% if di.status != 'completed' and di.status != 'rejected' and can_approve %}
+        <button onclick="openApproveModal({{ di.id }}, '{{ di.status }}')"
                 class="text-green-600 hover:underline">
           Approve
         </button>
@@ -113,9 +119,14 @@
 </div>
 
 <script>
-function openApproveModal(diId) {
-  document.getElementById("approve-form").action =
-    `/di/workflow/approve/${diId}`;
+function openApproveModal(diId, status) {
+  let path = `/di/workflow/supervisor/approve/${diId}`;
+  if (status === "supervisor_approved") {
+    path = `/di/workflow/reviewer/approve/${diId}`;
+  } else if (status === "reviewer_approved") {
+    path = `/di/workflow/manager/approve/${diId}`;
+  }
+  document.getElementById("approve-form").action = path;
   document.getElementById("approve-modal").classList.remove("hidden");
 }
 

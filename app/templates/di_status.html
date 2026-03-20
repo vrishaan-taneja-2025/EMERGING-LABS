@@ -33,7 +33,11 @@
       </td>
 
       <td class="px-4 py-2 flex justify-center gap-4">
-        {% if di.status != "completed" and di.status != "rejected" %}
+        {% set role_name = user.role.name|lower if user.role else "" %}
+        {% set can_approve = (di.status == "submitted" and role_name == "supervisor")
+                             or (di.status == "supervisor_approved" and role_name == "reviewer")
+                             or (di.status == "reviewer_approved" and role_name == "manager") %}
+        {% if di.status != "completed" and di.status != "rejected" and can_approve %}
           <button onclick="openApproveModal({{ di.id }})"
                   class="text-green-600 hover:underline">
             Approve

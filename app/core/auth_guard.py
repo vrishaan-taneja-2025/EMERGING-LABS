@@ -57,8 +57,26 @@ def require_user(user=Depends(get_current_user)):
     return user
 
 
+def get_user_role_name(user: User | None) -> str:
+    if isinstance(user, RedirectResponse):
+        return ""
+    if not user or not hasattr(user, "role") or not user.role or not user.role.name:
+        return ""
+    return user.role.name.strip().lower()
+
+
+def ensure_user_has_role(user: User, *allowed_roles: str):
+    if isinstance(user, RedirectResponse):
+        raise HTTPException(401, "Login required")
+    role_name = get_user_role_name(user)
+    normalized_roles = {role.strip().lower() for role in allowed_roles}
+    if role_name not in normalized_roles:
+        allowed_text = ", ".join(sorted(normalized_roles))
+        raise HTTPException(403, f"Only {allowed_text} can perform this action")
+
+
 def admin_required(request: Request, user: User = Depends(get_current_user)):
-    if not user.role or user.role.name.lower() != "admin":
+    if get_user_role_name(user) != "admin":
         response = RedirectResponse("/dashboard", status_code=302)
         response.set_cookie(
             key="flash_error",
@@ -69,7 +87,7 @@ def admin_required(request: Request, user: User = Depends(get_current_user)):
     return None
 
 def manager_required(request: Request, user: User = Depends(get_current_user)):
-    if not user.role or user.role.name.lower() != "manager":
+    if get_user_role_name(user) != "manager":
         response = RedirectResponse("/dashboard", status_code=302)
         response.set_cookie(
             key="flash_error",

@@ -5,11 +5,13 @@
   <h1 class="text-2xl font-bold">Daily Inspection</h1>
 
   <div class="flex flex-wrap gap-2 mt-4 sm:mt-0">
-    <a href="/inspection/di"
-       class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700
-              w-full sm:w-auto text-center">
-      Submit Inspection
-    </a>
+    {% if user.role and user.role.name|lower == "user" %}
+      <a href="/inspection/di"
+         class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700
+                w-full sm:w-auto text-center">
+        Submit Inspection
+      </a>
+    {% endif %}
 
     <a href="/inspection/equipments"
        class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600

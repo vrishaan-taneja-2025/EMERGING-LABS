@@ -3,10 +3,11 @@ from fastapi.responses import RedirectResponse
 from sqlalchemy.orm import Session
 from datetime import date
 from app.db.session import get_db
-from app.core.auth_guard import require_user
+from app.core.auth_guard import ensure_user_has_role, get_user_role_name, require_user
 from fastapi.templating import Jinja2Templates
 
 from app.models.daily_inspection import DailyInspection
+from app.models.di_equipment_log import DIEquipmentLog
 from app.models.equipment import Equipment
 from app.models.metadata import EquipmentMetadata
 from app.models.di_workflow import DIWorkflow
@@ -15,12 +16,35 @@ from app.models.di_snapshot import DISnapshot
 router = APIRouter(prefix="/inspection", tags=["Inspection"])
 templates = Jinja2Templates(directory="app/templates")
 
-# --------------------------------------------------
-# ROLE GUARD
-# --------------------------------------------------
-def require_role(user, role):
-    if user.role.name != role:
-        raise HTTPException(403, "Unauthorized")
+
+def latest_metadata_for_equipment(db: Session, equipment_id: int):
+    return (
+        db.query(EquipmentMetadata)
+        .filter(EquipmentMetadata.equipment_id == equipment_id)
+        .order_by(EquipmentMetadata.recorded_at.desc())
+        .first()
+    )
+
+
+def upsert_equipment_metadata(
+    db: Session,
+    equipment_id: int,
+    pressure: float | None,
+    temperature: float | None,
+    voltage: float | None,
+    frequency: float | None,
+):
+    metadata = latest_metadata_for_equipment(db, equipment_id)
+    if not metadata:
+        metadata = EquipmentMetadata(equipment_id=equipment_id)
+
+    metadata.pressure = pressure
+    metadata.temperature = temperature
+    metadata.voltage = voltage
+    metadata.frequency = frequency
+
+    db.add(metadata)
+    db.commit()
 
 # --------------------------------------------------
 # VIEW EQUIPMENT CARDS (EVERYONE)
@@ -38,23 +62,47 @@ def equipment_cards(request: Request, db: Session = Depends(get_db), user=Depend
 # --------------------------------------------------
 @router.get("/di")
 def di_cards(request: Request, db: Session = Depends(get_db), user=Depends(require_user)):
+    ensure_user_has_role(user, "user")
     equipments = db.query(Equipment).all()
+    equipment_cards = [
+        {
+            "equipment": eq,
+            "metadata": latest_metadata_for_equipment(db, eq.id),
+        }
+        for eq in equipments
+    ]
     return templates.TemplateResponse(
         "di_cards.html",
-        {"request": request, "equipments": equipments, "user": user}
+        {"request": request, "equipments": equipment_cards, "user": user}
     )
 
 # --------------------------------------------------
 # SUBMIT DI
 # --------------------------------------------------
 @router.post("/di")
-def submit_di(db: Session = Depends(get_db), user=Depends(require_user)):
+async def submit_di(request: Request, db: Session = Depends(get_db), user=Depends(require_user)):
+    ensure_user_has_role(user, "user")
+    form = await request.form()
     di = DailyInspection(
         inspection_date=date.today(),
         created_by=user.id,
         status="submitted"
     )
     db.add(di)
+    db.commit()
+    db.refresh(di)
+
+    for key, value in form.items():
+        if key.startswith("serviceability_"):
+            eq_id = int(key.split("_")[1])
+            remarks = form.get(f"remarks_{eq_id}", "")
+            db.add(DIEquipmentLog(
+                di_id=di.id,
+                equipment_id=eq_id,
+                serviceability=value,
+                remarks=remarks
+            ))
+
     db.commit()
     return RedirectResponse("/inspection/status", 302)
 
@@ -71,22 +119,12 @@ def add_metadata(
     db: Session = Depends(get_db),
     user=Depends(require_user)
 ):
-    require_role(user, "supervisor")
+    ensure_user_has_role(user, "user", "supervisor")
 
     if not any([pressure, temperature, voltage, frequency]):
         return RedirectResponse("/inspection/di", 302)
 
-    meta = db.query(EquipmentMetadata).filter_by(equipment_id=equipment_id).first()
-    if not meta:
-        meta = EquipmentMetadata(equipment_id=equipment_id)
-
-    meta.pressure = pressure
-    meta.temperature = temperature
-    meta.voltage = voltage
-    meta.frequency = frequency
-
-    db.add(meta)
-    db.commit()
+    upsert_equipment_metadata(db, equipment_id, pressure, temperature, voltage, frequency)
     return RedirectResponse("/inspection/di", 302)
 
 # --------------------------------------------------
@@ -114,7 +152,7 @@ def approve_di(
 
     required_role, next_status = FLOW[di.status]
 
-    if user.role.name != required_role:
+    if get_user_role_name(user) != required_role:
         raise HTTPException(403, "Unauthorized")
 
     di.status = next_status
@@ -186,12 +224,22 @@ def reject_di(
     db: Session = Depends(get_db),
     user=Depends(require_user)
 ):
+    ensure_user_has_role(user, "supervisor", "reviewer", "manager")
     di = db.query(DailyInspection).filter_by(id=di_id).first()
     if not di:
         raise HTTPException(404)
 
-    if di.status == "completed":
+    if di.status in {"completed", "rejected"}:
         raise HTTPException(403)
+
+    flow = {
+        "submitted": "supervisor",
+        "supervisor_approved": "reviewer",
+        "reviewer_approved": "manager",
+    }
+    required_role = flow.get(di.status)
+    if required_role and get_user_role_name(user) != required_role:
+        raise HTTPException(403, "Unauthorized")
 
     di.status = "rejected"
 
