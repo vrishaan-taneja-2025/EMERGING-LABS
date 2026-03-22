@@ -7,7 +7,7 @@ from app.core.exception_handlers import http_exception_handler
 from app.core.telemetry import telemetry_hub
 from app.db.base import Base
 from app.db.session import SessionLocal, engine
-from app.routes import auth, equipment, di, places, roles, users, inspection, dashboard, telemetry
+from app.routes import auth, equipment, di, places, roles, users, inspection, dashboard, telemetry, vector
 from app.routes import pages
 
 app = FastAPI(title="Datacenter DI System")
@@ -24,6 +24,7 @@ app.include_router(roles.router)
 app.include_router(users.router)
 app.include_router(inspection.router)
 app.include_router(telemetry.router)
+app.include_router(vector.router)
 app.add_exception_handler(HTTPException, http_exception_handler)
 
 
