@@ -30,6 +30,12 @@ class TelemetryPublishPayload(BaseModel):
     frequency: float | None = None
 
 
+class TelemetryLivePayload(TelemetryPublishPayload):
+    equipment_name: str | None = None
+    topic: str | None = None
+    published_at: datetime | None = None
+
+
 def _verify_publisher_key(key: str | None):
     if key != TELEMETRY_API_KEY:
         raise HTTPException(401, "Invalid telemetry publisher key")
@@ -92,6 +98,39 @@ async def publish_telemetry(
             pressure=payload.pressure,
             frequency=payload.frequency,
             published_at=datetime.now(timezone.utc),
+        )
+    )
+    return {"published": True}
+
+
+@router.post("/live")
+async def publish_live_telemetry(
+    payload: TelemetryLivePayload,
+    db: Session = Depends(get_db),
+    x_telemetry_key: str | None = Header(default=None),
+):
+    _verify_publisher_key(x_telemetry_key)
+
+    equipment = db.query(Equipment).filter(Equipment.id == payload.equipment_id).first()
+    if not equipment:
+        raise HTTPException(404, "Equipment not found")
+
+    if (payload.status or "").lower() != "on":
+        return {"published": False, "reason": "component is off"}
+
+    component_type = normalize_component_type(payload.component_type)
+    await telemetry_hub.publish_dashboard(
+        TelemetryEvent(
+            equipment_id=equipment.id,
+            equipment_name=payload.equipment_name or equipment.name,
+            component_type=component_type,
+            topic=payload.topic or build_topic(component_type, equipment.id),
+            status=payload.status,
+            temperature=payload.temperature,
+            voltage=payload.voltage,
+            pressure=payload.pressure,
+            frequency=payload.frequency,
+            published_at=payload.published_at or datetime.now(timezone.utc),
         )
     )
     return {"published": True}

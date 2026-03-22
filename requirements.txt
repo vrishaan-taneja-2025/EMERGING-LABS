@@ -10,3 +10,4 @@ passlib[bcrypt]
 argon2-cffi
 python-jose
 weasyprint
+kafka-python

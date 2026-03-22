@@ -2,10 +2,11 @@ from fastapi import FastAPI
 from fastapi.exceptions import HTTPException
 from fastapi.staticfiles import StaticFiles
 import app.models  # noqa: F401
+from app.core.bootstrap import ensure_default_auth_data, ensure_default_telemetry_entities
 from app.core.exception_handlers import http_exception_handler
 from app.core.telemetry import telemetry_hub
 from app.db.base import Base
-from app.db.session import engine
+from app.db.session import SessionLocal, engine
 from app.routes import auth, equipment, di, places, roles, users, inspection, dashboard, telemetry
 from app.routes import pages
 
@@ -29,6 +30,12 @@ app.add_exception_handler(HTTPException, http_exception_handler)
 @app.on_event("startup")
 async def startup_event():
     Base.metadata.create_all(bind=engine)
+    db = SessionLocal()
+    try:
+        ensure_default_auth_data(db)
+        ensure_default_telemetry_entities(db)
+    finally:
+        db.close()
     await telemetry_hub.start()
 
 

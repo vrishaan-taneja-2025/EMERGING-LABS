@@ -1,4 +1,28 @@
 services:
+  kafka:
+    image: redpandadata/redpanda:v24.2.8
+    container_name: proj1-kafka
+    restart: unless-stopped
+    command:
+      - redpanda
+      - start
+      - --overprovisioned
+      - --smp
+      - "1"
+      - --memory
+      - "512M"
+      - --reserve-memory
+      - "0M"
+      - --node-id
+      - "0"
+      - --check=false
+      - --kafka-addr
+      - PLAINTEXT://0.0.0.0:9092,OUTSIDE://0.0.0.0:19092
+      - --advertise-kafka-addr
+      - PLAINTEXT://kafka:9092,OUTSIDE://localhost:19092
+    ports:
+      - "19092:19092"
+
   db:
     image: postgres:16-alpine
     container_name: proj1-db
@@ -8,7 +32,7 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
@@ -26,6 +50,8 @@ services:
     depends_on:
       db:
         condition: service_healthy
+      kafka:
+        condition: service_started
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/project
       TELEMETRY_API_KEY: local-telemetry-key
@@ -41,10 +67,51 @@ services:
     depends_on:
       app:
         condition: service_started
+      kafka:
+        condition: service_started
     environment:
       TELEMETRY_BASE_URL: http://app:8000
       TELEMETRY_API_KEY: local-telemetry-key
-      TELEMETRY_PUBLISH_INTERVAL: "1"
+      TELEMETRY_PUBLISH_INTERVAL: "5"
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TELEMETRY_TOPIC: telemetry.raw
+
+  telemetry-db-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry-consumer
+    container_name: proj1-telemetry-db-consumer
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      kafka:
+        condition: service_started
+    environment:
+      DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/project
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TELEMETRY_TOPIC: telemetry.raw
+      KAFKA_GROUP_ID: telemetry-db-writer
+      TELEMETRY_CONSUMER_MODE: db
+
+  telemetry-app-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile.telemetry-consumer
+    container_name: proj1-telemetry-app-consumer
+    restart: unless-stopped
+    depends_on:
+      app:
+        condition: service_started
+      kafka:
+        condition: service_started
+    environment:
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+      KAFKA_TELEMETRY_TOPIC: telemetry.raw
+      KAFKA_GROUP_ID: telemetry-app-updater
+      TELEMETRY_CONSUMER_MODE: app
+      TELEMETRY_APP_BASE_URL: http://app:8000
+      TELEMETRY_API_KEY: local-telemetry-key
 
 volumes:
   postgres_data:

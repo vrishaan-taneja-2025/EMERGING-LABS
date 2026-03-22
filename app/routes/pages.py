@@ -1,15 +1,9 @@
-from fastapi import APIRouter, Request, Depends, Form
+from fastapi import APIRouter, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
-from app.core.auth_guard import login_required, require_user
-from app.core.security import create_token, hash_password
 from jose import jwt
 from app.core.security import SECRET_KEY
-from sqlalchemy.orm import Session
 
-from app.db.session import get_db
-from app.models.equipment import Equipment
-from app.models.user import User
 router = APIRouter()
 templates = Jinja2Templates(directory="app/templates")
 
@@ -42,32 +36,6 @@ def register_page(request: Request):
         "register_public.html",
         {"request": request}
     )
-
-
-@router.get("/dashboard")
-def dashboard(request: Request, user: User = Depends(require_user), db: Session = Depends(get_db)):
-    
-    current_user = getattr(request.state, "user", None)
-    if not current_user:
-        return RedirectResponse("/login?error=login_required", status_code=302)
-
-    flash_message = request.cookies.get("flash_success")
-    equipments = db.query(Equipment).all()
-    response = templates.TemplateResponse(
-        "dashboard.html",
-        {
-            "request": request,
-            "user": current_user,
-            "equipments": equipments,
-            "flash_success": flash_message
-        }
-    )
-
-    # ❗ Clear flash after reading
-    if flash_message:
-        response.delete_cookie("flash_success")
-
-    return response
 
 @router.get("/logout")
 def logout():

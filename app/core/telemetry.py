@@ -95,6 +95,9 @@ class TelemetryHub:
         await self._recorder_queue.put(event)
         await self._dashboard_queue.put(event)
 
+    async def publish_dashboard(self, event: TelemetryEvent):
+        await self._dashboard_queue.put(event)
+
     def snapshot(self):
         with self._lock:
             return list(self._dashboard_cache.values())

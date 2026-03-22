@@ -1,7 +1,6 @@
-
 from app.core.security import create_token, verify_password, hash_password
 from fastapi.responses import RedirectResponse
-from fastapi import APIRouter, Depends, Form, HTTPException, status, Response
+from fastapi import APIRouter, Depends, Form, status
 from sqlalchemy import func
 from sqlalchemy.orm import Session
 
@@ -20,9 +19,14 @@ def login(
 ):
     user = db.query(User).filter(User.username == username).first()
 
-    if not user or not verify_password(password, user.password_hash):
+    if (
+        not user
+        or not user.is_active
+        or not user.role
+        or not verify_password(password, user.password_hash)
+    ):
         response = RedirectResponse(
-            url="/login",
+            url="/login?error=invalid_credentials",
             status_code=status.HTTP_302_FOUND
         )
         response.set_cookie(
@@ -59,7 +63,6 @@ def login(
         # seconds
     )
 
-    print(response)
     return response
 
 
