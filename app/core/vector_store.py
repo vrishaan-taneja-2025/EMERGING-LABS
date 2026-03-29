@@ -4,7 +4,10 @@ import threading
 from pathlib import Path
 from typing import Any
 
-import numpy as np
+try:
+    import numpy as np
+except ImportError:  # pragma: no cover
+    np = None  # type: ignore
 
 try:
     import faiss
@@ -47,6 +50,8 @@ class FaissVectorStore:
     def _ensure_model(self):
         if self._model is not None:
             return
+        if np is None:
+            raise VectorStoreError("numpy is not installed")
         if SentenceTransformer is None:
             raise VectorStoreError("sentence-transformers is not installed")
         self._model = SentenceTransformer(self.model_name)

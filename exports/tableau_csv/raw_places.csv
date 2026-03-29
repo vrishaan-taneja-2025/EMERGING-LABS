@@ -1,0 +1,13 @@
+id,name,description
+1,Main Data Hall,Default telemetry demo location
+2,data hall A,
+3,UPS Room,Power conditioning and battery backup area
+4,Cooling Bay,Environmental control and CRAC servicing zone
+5,Compute Hall A,Primary compute floor section A
+6,Compute Hall B,Primary compute floor section B
+7,Compute Hall C,Primary compute floor section C
+8,UPS Room East,East power conditioning room
+9,UPS Room West,West power conditioning room
+10,Cooling Plant 1,Primary cooling plant
+11,Cooling Plant 2,Secondary cooling plant
+12,Network Core,Core switching and routing area

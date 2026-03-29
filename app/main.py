@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.exceptions import HTTPException
 from fastapi.staticfiles import StaticFiles
 import app.models  # noqa: F401
-from app.core.bootstrap import ensure_default_auth_data, ensure_default_telemetry_entities
+from app.core.bootstrap import ensure_default_auth_data, ensure_default_telemetry_entities, ensure_demo_data
 from app.core.exception_handlers import http_exception_handler
 from app.core.telemetry import telemetry_hub
 from app.db.base import Base
@@ -35,6 +35,7 @@ async def startup_event():
     try:
         ensure_default_auth_data(db)
         ensure_default_telemetry_entities(db)
+        ensure_demo_data(db)
     finally:
         db.close()
     await telemetry_hub.start()

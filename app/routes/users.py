@@ -34,6 +34,7 @@ def list_users(
     roles = db.query(Role).all()
 
     return templates.TemplateResponse(
+        request,
         "users.html",
         {
             "request": request,

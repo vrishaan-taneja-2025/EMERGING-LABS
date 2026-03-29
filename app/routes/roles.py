@@ -32,6 +32,7 @@ def list_roles(
     roles = query.offset((page - 1) * per_page).limit(per_page).all()
 
     return templates.TemplateResponse(
+        request,
         "roles.html",
         {
             "request": request,

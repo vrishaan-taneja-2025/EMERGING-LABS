@@ -20,15 +20,19 @@ def list_places(request: Request, user=Depends(require_user), db: Session = Depe
         query = query.filter(Place.name.ilike(f"%{search}%"))
     total = query.count()
     places = query.offset((page-1)*per_page).limit(per_page).all()
-    return templates.TemplateResponse("places.html", {
-        "request": request,
-        "user": user,
-        "places": places,
-        "page": page,
-        "per_page": per_page,
-        "total": total,
-        "search": search
-    })
+    return templates.TemplateResponse(
+        request,
+        "places.html",
+        {
+            "request": request,
+            "user": user,
+            "places": places,
+            "page": page,
+            "per_page": per_page,
+            "total": total,
+            "search": search
+        },
+    )
 
 # Add new place page
 @router.post("/places/create")

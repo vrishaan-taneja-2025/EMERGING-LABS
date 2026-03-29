@@ -1,0 +1,15 @@
+id,username,role_id,role_name,is_active,created_at
+1,admin,1,admin,True,2026-03-29T09:14:25.657373+00:00
+2,operator,2,user,True,2026-03-29T09:54:08.710292+00:00
+3,supervisor1,3,supervisor,True,2026-03-29T09:54:08.710292+00:00
+4,reviewer1,4,reviewer,True,2026-03-29T09:54:08.710292+00:00
+5,manager1,5,manager,True,2026-03-29T09:54:08.710292+00:00
+6,tableau_operator01,2,user,True,2026-03-29T10:19:00.924688+00:00
+7,tableau_operator02,2,user,True,2026-03-29T10:19:00.924688+00:00
+8,tableau_operator03,2,user,True,2026-03-29T10:19:00.924688+00:00
+9,tableau_operator04,2,user,True,2026-03-29T10:19:00.924688+00:00
+10,tableau_supervisor01,3,supervisor,True,2026-03-29T10:19:00.924688+00:00
+11,tableau_reviewer01,4,reviewer,True,2026-03-29T10:19:00.924688+00:00
+12,tableau_supervisor02,3,supervisor,True,2026-03-29T10:19:00.924688+00:00
+13,tableau_reviewer02,4,reviewer,True,2026-03-29T10:19:00.924688+00:00
+14,tableau_manager01,5,manager,True,2026-03-29T10:19:00.924688+00:00
