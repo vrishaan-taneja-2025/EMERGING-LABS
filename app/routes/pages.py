@@ -9,7 +9,7 @@ templates = Jinja2Templates(directory="app/templates")
 
 @router.get("/")
 def home(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request})
+    return templates.TemplateResponse(request, "home.html", {"request": request})
 
 
 @router.get("/login")
@@ -23,6 +23,7 @@ def login_page(request: Request, error: str | None = None):
             pass
 
     return templates.TemplateResponse(
+        request,
         "login.html",
         {"request": request, "error": error}
     )
@@ -33,6 +34,7 @@ def login_page(request: Request, error: str | None = None):
 def register_page(request: Request):
     
     return templates.TemplateResponse(
+        request,
         "register_public.html",
         {"request": request}
     )

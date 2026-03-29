@@ -1,0 +1,683 @@
+workflow_id,inspection_id,inspection_date,inspection_status,from_role,to_role,action,comments,acted_by_user_id,acted_by_username,acted_by_role,acted_at
+1,1,2026-03-27,completed,supervisor,reviewer,approved,All critical readings within range,3,supervisor1,supervisor,2026-03-29T09:54:08.710292
+2,1,2026-03-27,completed,reviewer,manager,approved,Inspection data validated,4,reviewer1,reviewer,2026-03-29T09:54:08.710292
+3,1,2026-03-27,completed,manager,completed,approved,Closed for operations,5,manager1,manager,2026-03-29T09:54:08.710292
+4,2,2026-03-28,supervisor_approved,supervisor,reviewer,approved,Forwarded with cooling observation,3,supervisor1,supervisor,2026-03-29T09:54:08.710292
+5,4,2025-11-29,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-11-29T09:30:00
+6,5,2025-11-29,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-11-29T21:30:00
+7,5,2025-11-29,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-11-29T22:30:00
+8,5,2025-11-29,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-11-29T23:30:00
+9,6,2025-11-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-11-30T09:30:00
+10,6,2025-11-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-11-30T10:30:00
+11,6,2025-11-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-11-30T11:30:00
+12,7,2025-11-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-11-30T21:30:00
+13,7,2025-11-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-11-30T22:30:00
+14,7,2025-11-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-11-30T23:30:00
+15,8,2025-12-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-01T09:30:00
+16,8,2025-12-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-01T10:30:00
+17,8,2025-12-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-01T11:30:00
+18,9,2025-12-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-01T21:30:00
+19,9,2025-12-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-01T22:30:00
+20,9,2025-12-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-01T23:30:00
+21,10,2025-12-02,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-02T09:30:00
+22,11,2025-12-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-02T21:30:00
+23,11,2025-12-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-02T22:30:00
+24,11,2025-12-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-02T23:30:00
+25,12,2025-12-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-03T09:30:00
+26,12,2025-12-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-03T10:30:00
+27,12,2025-12-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-03T11:30:00
+28,13,2025-12-03,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-03T21:30:00
+29,14,2025-12-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-04T09:30:00
+30,14,2025-12-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-04T10:30:00
+31,14,2025-12-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-04T11:30:00
+32,15,2025-12-04,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-04T21:30:00
+33,16,2025-12-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-05T09:30:00
+34,16,2025-12-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-05T10:30:00
+35,16,2025-12-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-05T11:30:00
+36,17,2025-12-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-05T21:30:00
+37,17,2025-12-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-05T22:30:00
+38,17,2025-12-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-05T23:30:00
+39,18,2025-12-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-06T09:30:00
+40,18,2025-12-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-06T10:30:00
+41,18,2025-12-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-06T11:30:00
+42,19,2025-12-06,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-06T21:30:00
+43,20,2025-12-07,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-07T09:30:00
+44,21,2025-12-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-07T21:30:00
+45,21,2025-12-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-07T22:30:00
+46,21,2025-12-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-07T23:30:00
+47,22,2025-12-08,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-08T09:30:00
+48,23,2025-12-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-08T21:30:00
+49,23,2025-12-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-08T22:30:00
+50,23,2025-12-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-08T23:30:00
+51,24,2025-12-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-09T09:30:00
+52,24,2025-12-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-09T10:30:00
+53,24,2025-12-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-09T11:30:00
+54,25,2025-12-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-09T21:30:00
+55,25,2025-12-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-09T22:30:00
+56,25,2025-12-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-09T23:30:00
+57,26,2025-12-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-10T09:30:00
+58,26,2025-12-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-10T10:30:00
+59,26,2025-12-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-10T11:30:00
+60,27,2025-12-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-10T21:30:00
+61,27,2025-12-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-10T22:30:00
+62,27,2025-12-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-10T23:30:00
+63,28,2025-12-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-11T09:30:00
+64,28,2025-12-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-11T10:30:00
+65,28,2025-12-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-11T11:30:00
+66,29,2025-12-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-11T21:30:00
+67,29,2025-12-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-11T22:30:00
+68,29,2025-12-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-11T23:30:00
+69,30,2025-12-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-12T09:30:00
+70,30,2025-12-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-12T10:30:00
+71,30,2025-12-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-12T11:30:00
+72,31,2025-12-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-12T21:30:00
+73,31,2025-12-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-12T22:30:00
+74,31,2025-12-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-12T23:30:00
+75,32,2025-12-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-13T09:30:00
+76,32,2025-12-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-13T10:30:00
+77,32,2025-12-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-13T11:30:00
+78,33,2025-12-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-13T21:30:00
+79,33,2025-12-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-13T22:30:00
+80,33,2025-12-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-13T23:30:00
+81,34,2025-12-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-14T09:30:00
+82,34,2025-12-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-14T10:30:00
+83,34,2025-12-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-14T11:30:00
+84,35,2025-12-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-14T21:30:00
+85,35,2025-12-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-14T22:30:00
+86,35,2025-12-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-14T23:30:00
+87,36,2025-12-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-15T09:30:00
+88,36,2025-12-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-15T10:30:00
+89,36,2025-12-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-15T11:30:00
+90,37,2025-12-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-15T21:30:00
+91,37,2025-12-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-15T22:30:00
+92,37,2025-12-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-15T23:30:00
+93,38,2025-12-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-16T09:30:00
+94,38,2025-12-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-16T10:30:00
+95,38,2025-12-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-16T11:30:00
+96,39,2025-12-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-16T21:30:00
+97,39,2025-12-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-16T22:30:00
+98,39,2025-12-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-16T23:30:00
+99,40,2025-12-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-17T09:30:00
+100,40,2025-12-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-17T10:30:00
+101,40,2025-12-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-17T11:30:00
+102,41,2025-12-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-17T21:30:00
+103,41,2025-12-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-17T22:30:00
+104,41,2025-12-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-17T23:30:00
+105,42,2025-12-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-18T09:30:00
+106,42,2025-12-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-18T10:30:00
+107,42,2025-12-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-18T11:30:00
+108,43,2025-12-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-18T21:30:00
+109,43,2025-12-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-18T22:30:00
+110,43,2025-12-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-18T23:30:00
+111,44,2025-12-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-19T09:30:00
+112,44,2025-12-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-19T10:30:00
+113,44,2025-12-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-19T11:30:00
+114,45,2025-12-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-19T21:30:00
+115,45,2025-12-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-19T22:30:00
+116,45,2025-12-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-19T23:30:00
+117,46,2025-12-20,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-20T09:30:00
+118,47,2025-12-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-20T21:30:00
+119,47,2025-12-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-20T22:30:00
+120,47,2025-12-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-20T23:30:00
+121,48,2025-12-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-21T09:30:00
+122,48,2025-12-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-21T10:30:00
+123,48,2025-12-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-21T11:30:00
+124,49,2025-12-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-21T21:30:00
+125,49,2025-12-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-21T22:30:00
+126,49,2025-12-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-21T23:30:00
+127,50,2025-12-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-22T09:30:00
+128,50,2025-12-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-22T10:30:00
+129,50,2025-12-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-22T11:30:00
+130,51,2025-12-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-22T21:30:00
+131,51,2025-12-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-22T22:30:00
+132,51,2025-12-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-22T23:30:00
+133,52,2025-12-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-23T09:30:00
+134,52,2025-12-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-23T10:30:00
+135,52,2025-12-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-23T11:30:00
+136,53,2025-12-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-23T21:30:00
+137,53,2025-12-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-23T22:30:00
+138,53,2025-12-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-23T23:30:00
+139,54,2025-12-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-24T09:30:00
+140,54,2025-12-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-24T10:30:00
+141,54,2025-12-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-24T11:30:00
+142,55,2025-12-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-24T21:30:00
+143,55,2025-12-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-24T22:30:00
+144,55,2025-12-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-24T23:30:00
+145,56,2025-12-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-25T09:30:00
+146,56,2025-12-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-25T10:30:00
+147,56,2025-12-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-25T11:30:00
+148,57,2025-12-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-25T21:30:00
+149,57,2025-12-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-25T22:30:00
+150,57,2025-12-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-25T23:30:00
+151,58,2025-12-26,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-26T09:30:00
+152,59,2025-12-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-26T21:30:00
+153,59,2025-12-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-26T22:30:00
+154,59,2025-12-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-26T23:30:00
+155,60,2025-12-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-27T09:30:00
+156,60,2025-12-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-27T10:30:00
+157,60,2025-12-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-27T11:30:00
+158,61,2025-12-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-27T21:30:00
+159,61,2025-12-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-27T22:30:00
+160,61,2025-12-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-27T23:30:00
+161,62,2025-12-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-28T09:30:00
+162,62,2025-12-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-28T10:30:00
+163,62,2025-12-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-28T11:30:00
+164,63,2025-12-28,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-28T21:30:00
+165,64,2025-12-29,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-29T09:30:00
+166,64,2025-12-29,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-29T10:30:00
+167,64,2025-12-29,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-29T11:30:00
+168,65,2025-12-29,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-29T21:30:00
+169,65,2025-12-29,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-29T22:30:00
+170,65,2025-12-29,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-29T23:30:00
+171,66,2025-12-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-30T09:30:00
+172,66,2025-12-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-30T10:30:00
+173,66,2025-12-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-30T11:30:00
+174,67,2025-12-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-30T21:30:00
+175,67,2025-12-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-30T22:30:00
+176,67,2025-12-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-30T23:30:00
+177,68,2025-12-31,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2025-12-31T09:30:00
+178,68,2025-12-31,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2025-12-31T10:30:00
+179,68,2025-12-31,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-31T11:30:00
+180,69,2025-12-31,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2025-12-31T21:30:00
+181,69,2025-12-31,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2025-12-31T22:30:00
+182,69,2025-12-31,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2025-12-31T23:30:00
+183,70,2026-01-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-01T09:30:00
+184,70,2026-01-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-01T10:30:00
+185,70,2026-01-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-01T11:30:00
+186,71,2026-01-01,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-01T21:30:00
+187,72,2026-01-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-02T09:30:00
+188,72,2026-01-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-02T10:30:00
+189,72,2026-01-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-02T11:30:00
+190,73,2026-01-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-02T21:30:00
+191,73,2026-01-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-02T22:30:00
+192,73,2026-01-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-02T23:30:00
+193,74,2026-01-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-03T09:30:00
+194,74,2026-01-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-03T10:30:00
+195,74,2026-01-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-03T11:30:00
+196,75,2026-01-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-03T21:30:00
+197,75,2026-01-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-03T22:30:00
+198,75,2026-01-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-03T23:30:00
+199,76,2026-01-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-04T09:30:00
+200,76,2026-01-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-04T10:30:00
+201,76,2026-01-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-04T11:30:00
+202,77,2026-01-04,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-04T21:30:00
+203,78,2026-01-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-05T09:30:00
+204,78,2026-01-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-05T10:30:00
+205,78,2026-01-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-05T11:30:00
+206,79,2026-01-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-05T21:30:00
+207,79,2026-01-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-05T22:30:00
+208,79,2026-01-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-05T23:30:00
+209,80,2026-01-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-06T09:30:00
+210,80,2026-01-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-06T10:30:00
+211,80,2026-01-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-06T11:30:00
+212,81,2026-01-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-06T21:30:00
+213,81,2026-01-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-06T22:30:00
+214,81,2026-01-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-06T23:30:00
+215,82,2026-01-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-07T09:30:00
+216,82,2026-01-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-07T10:30:00
+217,82,2026-01-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-07T11:30:00
+218,83,2026-01-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-07T21:30:00
+219,83,2026-01-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-07T22:30:00
+220,83,2026-01-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-07T23:30:00
+221,84,2026-01-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-08T09:30:00
+222,84,2026-01-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-08T10:30:00
+223,84,2026-01-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-08T11:30:00
+224,85,2026-01-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-08T21:30:00
+225,85,2026-01-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-08T22:30:00
+226,85,2026-01-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-08T23:30:00
+227,86,2026-01-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-09T09:30:00
+228,86,2026-01-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-09T10:30:00
+229,86,2026-01-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-09T11:30:00
+230,87,2026-01-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-09T21:30:00
+231,87,2026-01-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-09T22:30:00
+232,87,2026-01-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-09T23:30:00
+233,88,2026-01-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-10T09:30:00
+234,88,2026-01-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-10T10:30:00
+235,88,2026-01-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-10T11:30:00
+236,89,2026-01-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-10T21:30:00
+237,89,2026-01-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-10T22:30:00
+238,89,2026-01-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-10T23:30:00
+239,90,2026-01-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-11T09:30:00
+240,90,2026-01-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-11T10:30:00
+241,90,2026-01-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-11T11:30:00
+242,91,2026-01-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-11T21:30:00
+243,91,2026-01-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-11T22:30:00
+244,91,2026-01-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-11T23:30:00
+245,92,2026-01-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-12T09:30:00
+246,92,2026-01-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-12T10:30:00
+247,92,2026-01-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-12T11:30:00
+248,93,2026-01-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-12T21:30:00
+249,93,2026-01-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-12T22:30:00
+250,93,2026-01-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-12T23:30:00
+251,94,2026-01-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-13T09:30:00
+252,94,2026-01-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-13T10:30:00
+253,94,2026-01-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-13T11:30:00
+254,95,2026-01-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-13T21:30:00
+255,95,2026-01-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-13T22:30:00
+256,95,2026-01-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-13T23:30:00
+257,96,2026-01-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-14T09:30:00
+258,96,2026-01-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-14T10:30:00
+259,96,2026-01-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-14T11:30:00
+260,97,2026-01-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-14T21:30:00
+261,97,2026-01-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-14T22:30:00
+262,97,2026-01-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-14T23:30:00
+263,98,2026-01-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-15T09:30:00
+264,98,2026-01-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-15T10:30:00
+265,98,2026-01-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-15T11:30:00
+266,99,2026-01-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-15T21:30:00
+267,99,2026-01-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-15T22:30:00
+268,99,2026-01-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-15T23:30:00
+269,100,2026-01-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-16T09:30:00
+270,100,2026-01-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-16T10:30:00
+271,100,2026-01-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-16T11:30:00
+272,101,2026-01-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-16T21:30:00
+273,101,2026-01-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-16T22:30:00
+274,101,2026-01-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-16T23:30:00
+275,102,2026-01-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-17T09:30:00
+276,102,2026-01-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-17T10:30:00
+277,102,2026-01-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-17T11:30:00
+278,103,2026-01-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-17T21:30:00
+279,103,2026-01-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-17T22:30:00
+280,103,2026-01-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-17T23:30:00
+281,104,2026-01-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-18T09:30:00
+282,104,2026-01-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-18T10:30:00
+283,104,2026-01-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-18T11:30:00
+284,105,2026-01-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-18T21:30:00
+285,105,2026-01-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-18T22:30:00
+286,105,2026-01-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-18T23:30:00
+287,106,2026-01-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-19T09:30:00
+288,106,2026-01-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-19T10:30:00
+289,106,2026-01-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-19T11:30:00
+290,107,2026-01-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-19T21:30:00
+291,107,2026-01-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-19T22:30:00
+292,107,2026-01-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-19T23:30:00
+293,108,2026-01-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-20T09:30:00
+294,108,2026-01-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-20T10:30:00
+295,108,2026-01-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-20T11:30:00
+296,109,2026-01-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-20T21:30:00
+297,109,2026-01-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-20T22:30:00
+298,109,2026-01-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-20T23:30:00
+299,110,2026-01-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-21T09:30:00
+300,110,2026-01-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-21T10:30:00
+301,110,2026-01-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-21T11:30:00
+302,111,2026-01-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-21T21:30:00
+303,111,2026-01-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-21T22:30:00
+304,111,2026-01-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-21T23:30:00
+305,112,2026-01-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-22T09:30:00
+306,112,2026-01-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-22T10:30:00
+307,112,2026-01-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-22T11:30:00
+308,113,2026-01-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-22T21:30:00
+309,113,2026-01-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-22T22:30:00
+310,113,2026-01-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-22T23:30:00
+311,114,2026-01-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-23T09:30:00
+312,114,2026-01-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-23T10:30:00
+313,114,2026-01-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-23T11:30:00
+314,115,2026-01-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-23T21:30:00
+315,115,2026-01-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-23T22:30:00
+316,115,2026-01-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-23T23:30:00
+317,116,2026-01-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-24T09:30:00
+318,116,2026-01-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-24T10:30:00
+319,116,2026-01-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-24T11:30:00
+320,117,2026-01-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-24T21:30:00
+321,117,2026-01-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-24T22:30:00
+322,117,2026-01-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-24T23:30:00
+323,118,2026-01-25,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-25T09:30:00
+324,119,2026-01-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-25T21:30:00
+325,119,2026-01-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-25T22:30:00
+326,119,2026-01-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-25T23:30:00
+327,120,2026-01-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-26T09:30:00
+328,120,2026-01-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-26T10:30:00
+329,120,2026-01-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-26T11:30:00
+330,121,2026-01-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-26T21:30:00
+331,121,2026-01-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-26T22:30:00
+332,121,2026-01-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-26T23:30:00
+333,122,2026-01-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-27T09:30:00
+334,122,2026-01-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-27T10:30:00
+335,122,2026-01-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-27T11:30:00
+336,123,2026-01-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-27T21:30:00
+337,123,2026-01-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-27T22:30:00
+338,123,2026-01-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-27T23:30:00
+339,124,2026-01-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-28T09:30:00
+340,124,2026-01-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-28T10:30:00
+341,124,2026-01-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-28T11:30:00
+342,125,2026-01-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-28T21:30:00
+343,125,2026-01-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-28T22:30:00
+344,125,2026-01-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-28T23:30:00
+345,126,2026-01-29,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-29T09:30:00
+346,126,2026-01-29,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-29T10:30:00
+347,126,2026-01-29,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-29T11:30:00
+348,127,2026-01-29,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-29T21:30:00
+349,127,2026-01-29,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-29T22:30:00
+350,127,2026-01-29,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-29T23:30:00
+351,128,2026-01-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-30T09:30:00
+352,128,2026-01-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-30T10:30:00
+353,128,2026-01-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-30T11:30:00
+354,129,2026-01-30,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-30T21:30:00
+355,129,2026-01-30,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-30T22:30:00
+356,129,2026-01-30,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-30T23:30:00
+357,130,2026-01-31,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-01-31T09:30:00
+358,130,2026-01-31,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-01-31T10:30:00
+359,130,2026-01-31,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-31T11:30:00
+360,131,2026-01-31,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-01-31T21:30:00
+361,131,2026-01-31,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-01-31T22:30:00
+362,131,2026-01-31,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-01-31T23:30:00
+363,132,2026-02-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-01T09:30:00
+364,132,2026-02-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-01T10:30:00
+365,132,2026-02-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-01T11:30:00
+366,133,2026-02-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-01T21:30:00
+367,133,2026-02-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-01T22:30:00
+368,133,2026-02-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-01T23:30:00
+369,134,2026-02-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-02T09:30:00
+370,134,2026-02-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-02T10:30:00
+371,134,2026-02-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-02T11:30:00
+372,135,2026-02-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-02T21:30:00
+373,135,2026-02-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-02T22:30:00
+374,135,2026-02-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-02T23:30:00
+375,136,2026-02-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-03T09:30:00
+376,136,2026-02-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-03T10:30:00
+377,136,2026-02-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-03T11:30:00
+378,137,2026-02-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-03T21:30:00
+379,137,2026-02-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-03T22:30:00
+380,137,2026-02-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-03T23:30:00
+381,138,2026-02-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-04T09:30:00
+382,138,2026-02-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-04T10:30:00
+383,138,2026-02-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-04T11:30:00
+384,139,2026-02-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-04T21:30:00
+385,139,2026-02-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-04T22:30:00
+386,139,2026-02-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-04T23:30:00
+387,140,2026-02-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-05T09:30:00
+388,140,2026-02-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-05T10:30:00
+389,140,2026-02-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-05T11:30:00
+390,141,2026-02-05,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-05T21:30:00
+391,142,2026-02-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-06T09:30:00
+392,142,2026-02-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-06T10:30:00
+393,142,2026-02-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-06T11:30:00
+394,143,2026-02-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-06T21:30:00
+395,143,2026-02-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-06T22:30:00
+396,143,2026-02-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-06T23:30:00
+397,144,2026-02-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-07T09:30:00
+398,144,2026-02-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-07T10:30:00
+399,144,2026-02-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-07T11:30:00
+400,145,2026-02-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-07T21:30:00
+401,145,2026-02-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-07T22:30:00
+402,145,2026-02-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-07T23:30:00
+403,146,2026-02-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-08T09:30:00
+404,146,2026-02-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-08T10:30:00
+405,146,2026-02-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-08T11:30:00
+406,147,2026-02-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-08T21:30:00
+407,147,2026-02-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-08T22:30:00
+408,147,2026-02-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-08T23:30:00
+409,148,2026-02-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-09T09:30:00
+410,148,2026-02-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-09T10:30:00
+411,148,2026-02-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-09T11:30:00
+412,149,2026-02-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-09T21:30:00
+413,149,2026-02-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-09T22:30:00
+414,149,2026-02-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-09T23:30:00
+415,150,2026-02-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-10T09:30:00
+416,150,2026-02-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-10T10:30:00
+417,150,2026-02-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-10T11:30:00
+418,151,2026-02-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-10T21:30:00
+419,151,2026-02-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-10T22:30:00
+420,151,2026-02-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-10T23:30:00
+421,152,2026-02-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-11T09:30:00
+422,152,2026-02-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-11T10:30:00
+423,152,2026-02-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-11T11:30:00
+424,153,2026-02-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-11T21:30:00
+425,153,2026-02-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-11T22:30:00
+426,153,2026-02-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-11T23:30:00
+427,154,2026-02-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-12T09:30:00
+428,154,2026-02-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-12T10:30:00
+429,154,2026-02-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-12T11:30:00
+430,155,2026-02-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-12T21:30:00
+431,155,2026-02-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-12T22:30:00
+432,155,2026-02-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-12T23:30:00
+433,156,2026-02-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-13T09:30:00
+434,156,2026-02-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-13T10:30:00
+435,156,2026-02-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-13T11:30:00
+436,157,2026-02-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-13T21:30:00
+437,157,2026-02-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-13T22:30:00
+438,157,2026-02-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-13T23:30:00
+439,158,2026-02-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-14T09:30:00
+440,158,2026-02-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-14T10:30:00
+441,158,2026-02-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-14T11:30:00
+442,159,2026-02-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-14T21:30:00
+443,159,2026-02-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-14T22:30:00
+444,159,2026-02-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-14T23:30:00
+445,160,2026-02-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-15T09:30:00
+446,160,2026-02-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-15T10:30:00
+447,160,2026-02-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-15T11:30:00
+448,161,2026-02-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-15T21:30:00
+449,161,2026-02-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-15T22:30:00
+450,161,2026-02-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-15T23:30:00
+451,162,2026-02-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-16T09:30:00
+452,162,2026-02-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-16T10:30:00
+453,162,2026-02-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-16T11:30:00
+454,163,2026-02-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-16T21:30:00
+455,163,2026-02-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-16T22:30:00
+456,163,2026-02-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-16T23:30:00
+457,164,2026-02-17,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-17T09:30:00
+458,165,2026-02-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-17T21:30:00
+459,165,2026-02-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-17T22:30:00
+460,165,2026-02-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-17T23:30:00
+461,166,2026-02-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-18T09:30:00
+462,166,2026-02-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-18T10:30:00
+463,166,2026-02-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-18T11:30:00
+464,167,2026-02-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-18T21:30:00
+465,167,2026-02-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-18T22:30:00
+466,167,2026-02-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-18T23:30:00
+467,168,2026-02-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-19T09:30:00
+468,168,2026-02-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-19T10:30:00
+469,168,2026-02-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-19T11:30:00
+470,169,2026-02-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-19T21:30:00
+471,169,2026-02-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-19T22:30:00
+472,169,2026-02-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-19T23:30:00
+473,170,2026-02-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-20T09:30:00
+474,170,2026-02-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-20T10:30:00
+475,170,2026-02-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-20T11:30:00
+476,171,2026-02-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-20T21:30:00
+477,171,2026-02-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-20T22:30:00
+478,171,2026-02-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-20T23:30:00
+479,172,2026-02-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-21T09:30:00
+480,172,2026-02-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-21T10:30:00
+481,172,2026-02-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-21T11:30:00
+482,173,2026-02-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-21T21:30:00
+483,173,2026-02-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-21T22:30:00
+484,173,2026-02-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-21T23:30:00
+485,174,2026-02-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-22T09:30:00
+486,174,2026-02-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-22T10:30:00
+487,174,2026-02-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-22T11:30:00
+488,175,2026-02-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-22T21:30:00
+489,175,2026-02-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-22T22:30:00
+490,175,2026-02-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-22T23:30:00
+491,176,2026-02-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-23T09:30:00
+492,176,2026-02-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-23T10:30:00
+493,176,2026-02-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-23T11:30:00
+494,177,2026-02-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-23T21:30:00
+495,177,2026-02-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-23T22:30:00
+496,177,2026-02-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-23T23:30:00
+497,178,2026-02-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-24T09:30:00
+498,178,2026-02-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-24T10:30:00
+499,178,2026-02-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-24T11:30:00
+500,179,2026-02-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-24T21:30:00
+501,179,2026-02-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-24T22:30:00
+502,179,2026-02-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-24T23:30:00
+503,180,2026-02-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-25T09:30:00
+504,180,2026-02-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-25T10:30:00
+505,180,2026-02-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-25T11:30:00
+506,181,2026-02-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-25T21:30:00
+507,181,2026-02-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-25T22:30:00
+508,181,2026-02-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-25T23:30:00
+509,182,2026-02-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-26T09:30:00
+510,182,2026-02-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-26T10:30:00
+511,182,2026-02-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-26T11:30:00
+512,183,2026-02-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-26T21:30:00
+513,183,2026-02-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-26T22:30:00
+514,183,2026-02-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-26T23:30:00
+515,184,2026-02-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-27T09:30:00
+516,184,2026-02-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-27T10:30:00
+517,184,2026-02-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-27T11:30:00
+518,185,2026-02-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-27T21:30:00
+519,185,2026-02-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-27T22:30:00
+520,185,2026-02-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-27T23:30:00
+521,186,2026-02-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-02-28T09:30:00
+522,186,2026-02-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-02-28T10:30:00
+523,186,2026-02-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-28T11:30:00
+524,187,2026-02-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-02-28T21:30:00
+525,187,2026-02-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-02-28T22:30:00
+526,187,2026-02-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-02-28T23:30:00
+527,188,2026-03-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-01T09:30:00
+528,188,2026-03-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-01T10:30:00
+529,188,2026-03-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-01T11:30:00
+530,189,2026-03-01,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-01T21:30:00
+531,189,2026-03-01,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-01T22:30:00
+532,189,2026-03-01,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-01T23:30:00
+533,190,2026-03-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-02T09:30:00
+534,190,2026-03-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-02T10:30:00
+535,190,2026-03-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-02T11:30:00
+536,191,2026-03-02,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-02T21:30:00
+537,191,2026-03-02,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-02T22:30:00
+538,191,2026-03-02,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-02T23:30:00
+539,192,2026-03-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-03T09:30:00
+540,192,2026-03-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-03T10:30:00
+541,192,2026-03-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-03T11:30:00
+542,193,2026-03-03,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-03T21:30:00
+543,193,2026-03-03,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-03T22:30:00
+544,193,2026-03-03,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-03T23:30:00
+545,194,2026-03-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-04T09:30:00
+546,194,2026-03-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-04T10:30:00
+547,194,2026-03-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-04T11:30:00
+548,195,2026-03-04,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-04T21:30:00
+549,195,2026-03-04,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-04T22:30:00
+550,195,2026-03-04,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-04T23:30:00
+551,196,2026-03-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-05T09:30:00
+552,196,2026-03-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-05T10:30:00
+553,196,2026-03-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-05T11:30:00
+554,197,2026-03-05,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-05T21:30:00
+555,197,2026-03-05,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-05T22:30:00
+556,197,2026-03-05,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-05T23:30:00
+557,198,2026-03-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-06T09:30:00
+558,198,2026-03-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-06T10:30:00
+559,198,2026-03-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-06T11:30:00
+560,199,2026-03-06,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-06T21:30:00
+561,199,2026-03-06,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-06T22:30:00
+562,199,2026-03-06,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-06T23:30:00
+563,200,2026-03-07,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-07T09:30:00
+564,201,2026-03-07,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-07T21:30:00
+565,201,2026-03-07,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-07T22:30:00
+566,201,2026-03-07,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-07T23:30:00
+567,202,2026-03-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-08T09:30:00
+568,202,2026-03-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-08T10:30:00
+569,202,2026-03-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-08T11:30:00
+570,203,2026-03-08,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-08T21:30:00
+571,203,2026-03-08,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-08T22:30:00
+572,203,2026-03-08,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-08T23:30:00
+573,204,2026-03-09,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-09T09:30:00
+574,205,2026-03-09,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-09T21:30:00
+575,205,2026-03-09,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-09T22:30:00
+576,205,2026-03-09,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-09T23:30:00
+577,206,2026-03-10,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-10T09:30:00
+578,206,2026-03-10,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-10T10:30:00
+579,206,2026-03-10,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-10T11:30:00
+580,207,2026-03-10,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-10T21:30:00
+581,208,2026-03-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-11T09:30:00
+582,208,2026-03-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-11T10:30:00
+583,208,2026-03-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-11T11:30:00
+584,209,2026-03-11,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-11T21:30:00
+585,209,2026-03-11,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-11T22:30:00
+586,209,2026-03-11,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-11T23:30:00
+587,210,2026-03-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-12T09:30:00
+588,210,2026-03-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-12T10:30:00
+589,210,2026-03-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-12T11:30:00
+590,211,2026-03-12,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-12T21:30:00
+591,211,2026-03-12,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-12T22:30:00
+592,211,2026-03-12,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-12T23:30:00
+593,212,2026-03-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-13T09:30:00
+594,212,2026-03-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-13T10:30:00
+595,212,2026-03-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-13T11:30:00
+596,213,2026-03-13,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-13T21:30:00
+597,213,2026-03-13,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-13T22:30:00
+598,213,2026-03-13,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-13T23:30:00
+599,214,2026-03-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-14T09:30:00
+600,214,2026-03-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-14T10:30:00
+601,214,2026-03-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-14T11:30:00
+602,215,2026-03-14,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-14T21:30:00
+603,215,2026-03-14,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-14T22:30:00
+604,215,2026-03-14,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-14T23:30:00
+605,216,2026-03-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-15T09:30:00
+606,216,2026-03-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-15T10:30:00
+607,216,2026-03-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-15T11:30:00
+608,217,2026-03-15,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-15T21:30:00
+609,217,2026-03-15,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-15T22:30:00
+610,217,2026-03-15,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-15T23:30:00
+611,218,2026-03-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-16T09:30:00
+612,218,2026-03-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-16T10:30:00
+613,218,2026-03-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-16T11:30:00
+614,219,2026-03-16,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-16T21:30:00
+615,219,2026-03-16,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-16T22:30:00
+616,219,2026-03-16,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-16T23:30:00
+617,220,2026-03-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-17T09:30:00
+618,220,2026-03-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-17T10:30:00
+619,220,2026-03-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-17T11:30:00
+620,221,2026-03-17,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-17T21:30:00
+621,221,2026-03-17,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-17T22:30:00
+622,221,2026-03-17,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-17T23:30:00
+623,222,2026-03-18,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-18T09:30:00
+624,222,2026-03-18,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-18T10:30:00
+625,222,2026-03-18,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-18T11:30:00
+626,223,2026-03-18,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-18T21:30:00
+627,224,2026-03-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-19T09:30:00
+628,224,2026-03-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-19T10:30:00
+629,224,2026-03-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-19T11:30:00
+630,225,2026-03-19,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-19T21:30:00
+631,225,2026-03-19,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-19T22:30:00
+632,225,2026-03-19,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-19T23:30:00
+633,226,2026-03-20,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-20T09:30:00
+634,227,2026-03-20,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-20T21:30:00
+635,227,2026-03-20,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-20T22:30:00
+636,227,2026-03-20,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-20T23:30:00
+637,228,2026-03-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-21T09:30:00
+638,228,2026-03-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-21T10:30:00
+639,228,2026-03-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-21T11:30:00
+640,229,2026-03-21,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-21T21:30:00
+641,229,2026-03-21,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-21T22:30:00
+642,229,2026-03-21,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-21T23:30:00
+643,230,2026-03-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-22T09:30:00
+644,230,2026-03-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-22T10:30:00
+645,230,2026-03-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-22T11:30:00
+646,231,2026-03-22,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-22T21:30:00
+647,231,2026-03-22,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-22T22:30:00
+648,231,2026-03-22,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-22T23:30:00
+649,232,2026-03-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-23T09:30:00
+650,232,2026-03-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-23T10:30:00
+651,232,2026-03-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-23T11:30:00
+652,233,2026-03-23,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-23T21:30:00
+653,233,2026-03-23,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-23T22:30:00
+654,233,2026-03-23,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-23T23:30:00
+655,234,2026-03-24,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-24T09:30:00
+656,234,2026-03-24,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-24T10:30:00
+657,234,2026-03-24,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-24T11:30:00
+658,235,2026-03-24,rejected,supervisor,creator,rejected,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-24T21:30:00
+659,236,2026-03-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-25T09:30:00
+660,236,2026-03-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-25T10:30:00
+661,236,2026-03-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-25T11:30:00
+662,237,2026-03-25,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-25T21:30:00
+663,237,2026-03-25,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-25T22:30:00
+664,237,2026-03-25,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-25T23:30:00
+665,238,2026-03-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-26T09:30:00
+666,238,2026-03-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-26T10:30:00
+667,238,2026-03-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-26T11:30:00
+668,239,2026-03-26,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-26T21:30:00
+669,239,2026-03-26,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-26T22:30:00
+670,239,2026-03-26,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-26T23:30:00
+671,240,2026-03-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-27T09:30:00
+672,240,2026-03-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-27T10:30:00
+673,240,2026-03-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-27T11:30:00
+674,241,2026-03-27,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-27T21:30:00
+675,241,2026-03-27,completed,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-27T22:30:00
+676,241,2026-03-27,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-27T23:30:00
+677,242,2026-03-28,reviewer_approved,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-28T09:30:00
+678,242,2026-03-28,reviewer_approved,reviewer,manager,approved,Reviewer validated findings and measurements,13,tableau_reviewer02,reviewer,2026-03-28T10:30:00
+679,243,2026-03-28,completed,supervisor,reviewer,approved,Supervisor reviewed inspection package,10,tableau_supervisor01,supervisor,2026-03-28T21:30:00
+680,243,2026-03-28,completed,reviewer,manager,approved,Reviewer validated findings and measurements,11,tableau_reviewer01,reviewer,2026-03-28T22:30:00
+681,243,2026-03-28,completed,manager,completed,approved,Manager closed the inspection successfully,14,tableau_manager01,manager,2026-03-28T23:30:00
+682,245,2026-03-29,supervisor_approved,supervisor,reviewer,approved,Supervisor reviewed inspection package,12,tableau_supervisor02,supervisor,2026-03-29T21:30:00

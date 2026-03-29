@@ -99,17 +99,21 @@ def list_equipments(request: Request, user=Depends(require_user), db: Session = 
     print("equipment_types: ",equipment_types)
     print("places: ",places)
 
-    return templates.TemplateResponse("equipments.html", {
-        "request": request,
-        "user": user,
-        "equipments": equipment_list,
-        "places": places,
-        "equipment_types": equipment_types,
-        "page": page,
-        "per_page": per_page,
-        "total": total,
-        "search": search
-    })
+    return templates.TemplateResponse(
+        request,
+        "equipments.html",
+        {
+            "request": request,
+            "user": user,
+            "equipments": equipment_list,
+            "places": places,
+            "equipment_types": equipment_types,
+            "page": page,
+            "per_page": per_page,
+            "total": total,
+            "search": search
+        },
+    )
 
 
 # -------------------------

@@ -53,6 +53,7 @@ def upsert_equipment_metadata(
 def equipment_cards(request: Request, db: Session = Depends(get_db), user=Depends(require_user)):
     equipments = db.query(Equipment).all()
     return templates.TemplateResponse(
+        request,
         "equipment_cards.html",
         {"request": request, "equipments": equipments, "user": user}
     )
@@ -72,6 +73,7 @@ def di_cards(request: Request, db: Session = Depends(get_db), user=Depends(requi
         for eq in equipments
     ]
     return templates.TemplateResponse(
+        request,
         "di_cards.html",
         {"request": request, "equipments": equipment_cards, "user": user}
     )
@@ -212,6 +214,7 @@ def approve_di(
 def di_status(request: Request, db: Session = Depends(get_db), user=Depends(require_user)):
     di_list = db.query(DailyInspection).order_by(DailyInspection.created_at.desc()).all()
     return templates.TemplateResponse(
+        request,
         "di_status.html",
         {"request": request, "di_list": di_list, "user": user}
     )

@@ -11,3 +11,6 @@ argon2-cffi
 python-jose
 weasyprint
 kafka-python
+numpy
+faiss-cpu
+sentence-transformers

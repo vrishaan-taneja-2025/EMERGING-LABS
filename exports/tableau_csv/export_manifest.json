@@ -1,0 +1,21 @@
+{
+  "files": {
+    "raw_daily_inspections.csv": 245,
+    "raw_di_equipment_logs.csv": 11625,
+    "raw_di_workflow.csv": 682,
+    "raw_equipment_metadata.csv": 56,
+    "raw_equipment_types.csv": 5,
+    "raw_equipments.csv": 56,
+    "raw_places.csv": 12,
+    "raw_roles.csv": 5,
+    "raw_telemetry_alerts.csv": 3431,
+    "raw_telemetry_records.csv": 152634,
+    "raw_users.csv": 14,
+    "tableau_alert_fact.csv": 3450,
+    "tableau_equipment_master.csv": 56,
+    "tableau_inspection_fact.csv": 11625,
+    "tableau_telemetry_fact.csv": 152740,
+    "tableau_workflow_fact.csv": 682
+  },
+  "generated_at": "2026-03-29T10:37:46.911582Z"
+}

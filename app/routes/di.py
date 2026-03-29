@@ -64,6 +64,7 @@ def di_dashboard(
     )
 
     return templates.TemplateResponse(
+        request,
         "di_dashboard.html",
         {
             "request": request,
@@ -102,11 +103,15 @@ def di_form(request: Request, db: Session = Depends(get_db), user=Depends(requir
             "metadata": latest_metadata_for_equipment(db, eq.id),
         })
 
-    return templates.TemplateResponse("di_form.html", {
-        "request": request,
-        "user": user,
-        "place_groups": list(place_groups.values())
-    })
+    return templates.TemplateResponse(
+        request,
+        "di_form.html",
+        {
+            "request": request,
+            "user": user,
+            "place_groups": list(place_groups.values())
+        },
+    )
 
 # ==================================================
 # USER – SUBMIT DI
@@ -163,11 +168,15 @@ def save_form_metadata(
 @router.get("/list")
 def list_di(request: Request, db: Session = Depends(get_db), user=Depends(require_user)):
     di_list = db.query(DailyInspection).order_by(DailyInspection.created_at.desc()).all()
-    return templates.TemplateResponse("di_list.html", {
-        "request": request,
-        "user": user,
-        "di_list": di_list
-    })
+    return templates.TemplateResponse(
+        request,
+        "di_list.html",
+        {
+            "request": request,
+            "user": user,
+            "di_list": di_list
+        },
+    )
 
 # ==================================================
 # SUPERVISOR – ADD METADATA
@@ -179,11 +188,15 @@ def supervisor_view(di_id: int, request: Request, db: Session = Depends(get_db),
     if not di or di.status != "submitted":
         raise HTTPException(403)
 
-    return templates.TemplateResponse("di_supervisor.html", {
-        "request": request,
-        "di": di,
-        "user": user
-    })
+    return templates.TemplateResponse(
+        request,
+        "di_supervisor.html",
+        {
+            "request": request,
+            "di": di,
+            "user": user
+        },
+    )
 
 @router.post("/supervisor/metadata/{equipment_id}")
 def add_metadata(
@@ -412,4 +425,3 @@ def reject_di(
     db.commit()
 
     return RedirectResponse("/di/list", status_code=302)
-

@@ -4,29 +4,168 @@
 <div class="flex items-center justify-between mb-6">
   <div>
     <h2 class="text-2xl font-bold">Dashboard</h2>
-    <p class="text-sm text-gray-500">Live telemetry refreshes every 5 seconds.</p>
+    <p class="text-sm text-gray-500">Database-backed operational metrics with live telemetry refresh every 5 seconds.</p>
   </div>
   <div class="text-sm text-gray-500" id="telemetry-last-refresh">Waiting for telemetry...</div>
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-  <div class="bg-white shadow rounded-lg p-4">
-    <p class="text-sm text-gray-500">Total Equipments</p>
-    <p class="text-2xl font-bold">{{ equipments | length }}</p>
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 mb-6">
+  {% for metric in summary_cards %}
+  <div class="bg-white shadow rounded-lg p-5 border-l-4
+              {% if metric.tone == 'green' %}border-green-500{% elif metric.tone == 'red' %}border-red-500{% elif metric.tone == 'amber' %}border-amber-500{% elif metric.tone == 'blue' %}border-blue-500{% elif metric.tone == 'violet' %}border-violet-500{% else %}border-slate-500{% endif %}">
+    <p class="text-sm text-gray-500">{{ metric.label }}</p>
+    <p class="mt-2 text-3xl font-bold text-gray-900">{{ metric.value }}</p>
+    <p class="mt-2 text-xs text-gray-500">{{ metric.hint }}</p>
   </div>
+  {% endfor %}
+</div>
+
+<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 mb-6">
+  {% for metric in secondary_metrics %}
   <div class="bg-white shadow rounded-lg p-4">
-    <p class="text-sm text-gray-500">Serviceable</p>
-    <p class="text-2xl font-bold text-green-600">{{ serviceable | default(0) }}</p>
+    <p class="text-xs uppercase tracking-wide text-gray-400">{{ metric.label }}</p>
+    <p class="mt-2 text-2xl font-semibold text-gray-800">{{ metric.value }}</p>
   </div>
-  <div class="bg-white shadow rounded-lg p-4">
-    <p class="text-sm text-gray-500">Unserviceable</p>
-    <p class="text-2xl font-bold text-red-600">{{ unserviceable | default(0) }}</p>
+  {% endfor %}
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+  <div class="xl:col-span-2 bg-white shadow rounded-lg p-5">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900">Telemetry Volume vs Anomalies</h3>
+        <p class="text-sm text-gray-500">Last 7 days from database history.</p>
+      </div>
+    </div>
+    <div class="h-80">
+      <canvas id="telemetryTrendChart"></canvas>
+    </div>
+  </div>
+
+  <div class="bg-white shadow rounded-lg p-5">
+    <h3 class="text-lg font-semibold text-gray-900">Inspection Status Mix</h3>
+    <p class="text-sm text-gray-500 mb-4">Current workflow distribution.</p>
+    <div class="h-80">
+      <canvas id="inspectionStatusChart"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-6">
+  <div class="bg-white shadow rounded-lg p-5">
+    <h3 class="text-lg font-semibold text-gray-900">Equipment by Type</h3>
+    <p class="text-sm text-gray-500 mb-4">Asset footprint across the estate.</p>
+    <div class="h-80">
+      <canvas id="equipmentTypeChart"></canvas>
+    </div>
+  </div>
+
+  <div class="xl:col-span-2 bg-white shadow rounded-lg p-5">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h3 class="text-lg font-semibold text-gray-900">Place Serviceability</h3>
+        <p class="text-sm text-gray-500">Operational readiness by location.</p>
+      </div>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="min-w-full text-sm">
+        <thead class="bg-gray-50 text-gray-500 uppercase tracking-wide">
+          <tr>
+            <th class="px-4 py-3 text-left">Place</th>
+            <th class="px-4 py-3 text-right">Serviceable</th>
+            <th class="px-4 py-3 text-right">Unserviceable</th>
+            <th class="px-4 py-3 text-right">Readiness %</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in place_serviceability %}
+          {% set serviceable_count = row.serviceable or 0 %}
+          {% set unserviceable_count = row.unserviceable or 0 %}
+          {% set total_count = serviceable_count + unserviceable_count %}
+          <tr class="border-t">
+            <td class="px-4 py-3 font-medium text-gray-800">{{ row.name }}</td>
+            <td class="px-4 py-3 text-right text-green-700">{{ serviceable_count }}</td>
+            <td class="px-4 py-3 text-right text-red-700">{{ unserviceable_count }}</td>
+            <td class="px-4 py-3 text-right text-gray-700">
+              {% if total_count %}
+                {{ ((serviceable_count / total_count) * 100) | round(1) }}%
+              {% else %}
+                —
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+  <div class="bg-white shadow rounded-lg p-5">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">Recent Active Alerts</h3>
+      <span class="text-xs uppercase tracking-wide text-red-500">Live from DB</span>
+    </div>
+    <div class="space-y-3">
+      {% for alert in recent_alerts %}
+      <div class="rounded-lg border border-red-100 bg-red-50 p-4">
+        <div class="flex items-center justify-between gap-4">
+          <p class="font-semibold text-red-900">{{ alert.equipment.name if alert.equipment else "Unknown Equipment" }}</p>
+          <span class="text-xs font-medium uppercase tracking-wide text-red-700">{{ alert.severity }}</span>
+        </div>
+        <p class="mt-2 text-sm text-red-800">{{ alert.message }}</p>
+        <p class="mt-2 text-xs text-red-500">{{ alert.created_at }}</p>
+      </div>
+      {% else %}
+      <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-500">
+        No active alerts right now.
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="bg-white shadow rounded-lg p-5">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-lg font-semibold text-gray-900">Recent Inspection Activity</h3>
+      <span class="text-xs uppercase tracking-wide text-blue-500">Approval pipeline</span>
+    </div>
+    <div class="space-y-3">
+      {% for inspection in recent_inspections %}
+      <div class="rounded-lg border border-gray-200 p-4">
+        <div class="flex items-center justify-between gap-4">
+          <div>
+            <p class="font-semibold text-gray-900">Inspection #{{ inspection.id }}</p>
+            <p class="text-sm text-gray-500">{{ inspection.inspection_date }}{% if inspection.user %} • {{ inspection.user.username }}{% endif %}</p>
+          </div>
+          <span class="rounded-full px-3 py-1 text-xs font-semibold
+                      {% if inspection.status == 'completed' %}bg-green-100 text-green-700
+                      {% elif inspection.status == 'rejected' %}bg-red-100 text-red-700
+                      {% else %}bg-amber-100 text-amber-700{% endif %}">
+            {{ inspection.status.replace('_', ' ') }}
+          </span>
+        </div>
+        <p class="mt-2 text-xs text-gray-400">{{ inspection.created_at }}</p>
+      </div>
+      {% else %}
+      <div class="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-500">
+        No inspections found.
+      </div>
+      {% endfor %}
+    </div>
   </div>
 </div>
 
 <div id="telemetry-empty"
      class="hidden bg-white rounded-lg shadow p-6 text-sm text-gray-500">
   No live telemetry has been published yet.
+</div>
+
+<div class="flex items-center justify-between mb-4">
+  <div>
+    <h3 class="text-xl font-semibold text-gray-900">Live Equipment Telemetry</h3>
+    <p class="text-sm text-gray-500">Streaming state for each tracked asset.</p>
+  </div>
 </div>
 
 <div id="telemetry-grid" class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -76,9 +215,93 @@
 </div>
 
 <script>
+const dashboardCharts = {{ chart_data | tojson }};
+
 function formatMetric(value, suffix = "") {
   if (value === null || value === undefined) return "-";
   return `${value}${suffix}`;
+}
+
+function renderCharts() {
+  const telemetryCanvas = document.getElementById("telemetryTrendChart");
+  if (telemetryCanvas) {
+    new Chart(telemetryCanvas, {
+      type: "line",
+      data: {
+        labels: dashboardCharts.telemetry_daily.labels,
+        datasets: [
+          {
+            label: "Telemetry Events",
+            data: dashboardCharts.telemetry_daily.events,
+            borderColor: "#2563eb",
+            backgroundColor: "rgba(37, 99, 235, 0.12)",
+            tension: 0.35,
+            fill: true
+          },
+          {
+            label: "Anomalies",
+            data: dashboardCharts.telemetry_daily.anomalies,
+            borderColor: "#dc2626",
+            backgroundColor: "rgba(220, 38, 38, 0.12)",
+            tension: 0.35,
+            fill: false
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false
+      }
+    });
+  }
+
+  const inspectionCanvas = document.getElementById("inspectionStatusChart");
+  if (inspectionCanvas) {
+    new Chart(inspectionCanvas, {
+      type: "doughnut",
+      data: {
+        labels: dashboardCharts.inspection_status.labels,
+        datasets: [{
+          data: dashboardCharts.inspection_status.values,
+          backgroundColor: ["#2563eb", "#16a34a", "#f59e0b", "#dc2626", "#8b5cf6", "#14b8a6"]
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: {
+            position: "bottom"
+          }
+        }
+      }
+    });
+  }
+
+  const equipmentCanvas = document.getElementById("equipmentTypeChart");
+  if (equipmentCanvas) {
+    new Chart(equipmentCanvas, {
+      type: "bar",
+      data: {
+        labels: dashboardCharts.equipment_type.labels,
+        datasets: [{
+          label: "Assets",
+          data: dashboardCharts.equipment_type.values,
+          backgroundColor: "#0f766e"
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: "y",
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  }
 }
 
 function applyTelemetryItem(item) {
@@ -127,6 +350,7 @@ async function refreshTelemetryDashboard() {
   items.forEach(applyTelemetryItem);
 }
 
+renderCharts();
 refreshTelemetryDashboard();
 setInterval(refreshTelemetryDashboard, 5000);
 </script>

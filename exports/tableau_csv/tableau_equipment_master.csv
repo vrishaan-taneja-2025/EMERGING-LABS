@@ -1,0 +1,57 @@
+equipment_id,equipment_name,equipment_type,place,place_description,equipment_status,serviceability,remarks,latest_temperature,latest_voltage,latest_pressure,latest_frequency,latest_humidity,latest_recorded_at
+1,Battery Bank A,battery,Main Data Hall,Default telemetry demo location,On,S,Auto-seeded telemetry demo battery,27.4,12.9,,,44.0,2026-03-29T09:54:08.710292
+2,Server Rack A,server,Main Data Hall,Default telemetry demo location,On,S,Auto-seeded telemetry demo server,24.3,229.6,1.5,50.0,43.0,2026-03-29T09:54:08.710292
+3,server rack b,server,data hall A,,On,S,,28.4,231.7,1.6,49.9,45.0,2026-03-29T10:22:01.755931
+4,Battery Bank B,battery,UPS Room,Power conditioning and battery backup area,On,S,Secondary battery string under observation,30.8,13.3,,,46.0,2026-03-29T09:54:08.710292
+5,Server Rack B,server,Main Data Hall,Default telemetry demo location,On,U,Intermittent thermal deviation observed in recent checks,29.7,233.1,1.8,49.9,47.0,2026-03-29T09:54:08.710292
+6,UPS Panel 1,ups,UPS Room,Power conditioning and battery backup area,On,S,Feeds compute hall power distribution,26.1,231.0,,50.1,42.0,2026-03-29T09:54:08.710292
+7,Cooling Unit 1,cooling,Cooling Bay,Environmental control and CRAC servicing zone,On,S,Primary CRAC unit for the main hall,20.5,,2.0,49.9,39.0,2026-03-29T09:54:08.710292
+8,Cooling Unit 2,cooling,Cooling Bay,Environmental control and CRAC servicing zone,Standby,S,Standby unit available for peak cooling demand,19.8,,1.7,50.0,38.0,2026-03-29T09:54:08.710292
+9,Demo Server Rack A01,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,28.51,230.78,1.68,49.77,48.08,2026-03-29T10:00:00
+10,Demo Server Rack A02,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,21.15,225.88,1.27,49.72,45.13,2026-03-29T10:00:00
+11,Demo Server Rack A03,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,28.84,227.44,1.9,49.95,45.42,2026-03-29T10:00:00
+12,Demo Server Rack A04,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,23.69,229.21,1.98,50.24,39.63,2026-03-29T10:00:00
+13,Demo Server Rack A05,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,24.59,225.95,1.97,49.7,43.05,2026-03-29T10:00:00
+14,Demo Server Rack A06,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,23.35,226.95,1.9,50.29,42.68,2026-03-29T10:00:00
+15,Demo Server Rack A07,server,Compute Hall A,Primary compute floor section A,On,U,High-density compute rack in hall A,26.23,230.38,1.19,49.93,49.56,2026-03-29T10:00:00
+16,Demo Server Rack A08,server,Compute Hall A,Primary compute floor section A,On,S,High-density compute rack in hall A,26.59,233.84,1.5,49.99,46.36,2026-03-29T10:00:00
+17,Demo Server Rack B01,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,27.5,229.41,1.69,49.81,38.76,2026-03-29T10:00:00
+18,Demo Server Rack B02,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,25.14,233.04,1.37,49.84,42.84,2026-03-29T10:00:00
+19,Demo Server Rack B03,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,21.93,229.89,1.28,50.18,41.6,2026-03-29T10:00:00
+20,Demo Server Rack B04,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,26.77,225.11,1.62,49.89,48.04,2026-03-29T10:00:00
+21,Demo Server Rack B05,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,21.29,225.49,1.7,49.94,42.61,2026-03-29T10:00:00
+22,Demo Server Rack B06,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,26.63,228.27,1.67,49.81,40.33,2026-03-29T10:00:00
+23,Demo Server Rack B07,server,Compute Hall B,Primary compute floor section B,On,U,High-density compute rack in hall B,29.98,227.64,1.27,49.93,46.78,2026-03-29T10:00:00
+24,Demo Server Rack B08,server,Compute Hall B,Primary compute floor section B,On,S,High-density compute rack in hall B,23.74,232.02,1.72,50.01,39.71,2026-03-29T10:00:00
+25,Demo Server Rack C01,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,22.37,229.98,1.64,49.78,47.2,2026-03-29T10:00:00
+26,Demo Server Rack C02,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,28.54,229.88,1.67,50.14,38.04,2026-03-29T10:00:00
+27,Demo Server Rack C03,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,23.86,225.91,1.96,49.94,42.09,2026-03-29T10:00:00
+28,Demo Server Rack C04,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,26.96,228.63,1.29,50.11,45.36,2026-03-29T10:00:00
+29,Demo Server Rack C05,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,22.31,224.27,1.23,49.71,42.8,2026-03-29T10:00:00
+30,Demo Server Rack C06,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,20.74,227.25,1.33,49.85,43.34,2026-03-29T10:00:00
+31,Demo Server Rack C07,server,Compute Hall C,Primary compute floor section C,On,U,High-density compute rack in hall C,21.77,233.89,1.78,49.86,43.4,2026-03-29T10:00:00
+32,Demo Server Rack C08,server,Compute Hall C,Primary compute floor section C,On,S,High-density compute rack in hall C,29.46,230.62,1.23,49.93,48.77,2026-03-29T10:00:00
+33,Demo Battery Bank 01,battery,UPS Room East,East power conditioning room,On,S,Backup power battery string for critical loads,31.18,13.28,,,48.74,2026-03-29T10:00:00
+34,Demo Battery Bank 02,battery,UPS Room West,West power conditioning room,On,S,Backup power battery string for critical loads,32.06,13.52,,,39.82,2026-03-29T10:00:00
+35,Demo Battery Bank 03,battery,UPS Room East,East power conditioning room,On,S,Backup power battery string for critical loads,27.18,13.27,,,41.0,2026-03-29T10:00:00
+36,Demo Battery Bank 04,battery,UPS Room West,West power conditioning room,On,S,Backup power battery string for critical loads,26.02,12.94,,,46.03,2026-03-29T10:00:00
+37,Demo Battery Bank 05,battery,UPS Room East,East power conditioning room,On,S,Backup power battery string for critical loads,28.05,13.56,,,47.43,2026-03-29T10:00:00
+38,Demo Battery Bank 06,battery,UPS Room West,West power conditioning room,On,S,Backup power battery string for critical loads,28.56,12.78,,,40.41,2026-03-29T10:00:00
+39,Demo Battery Bank 07,battery,UPS Room East,East power conditioning room,On,S,Backup power battery string for critical loads,32.12,13.58,,,48.85,2026-03-29T10:00:00
+40,Demo Battery Bank 08,battery,UPS Room West,West power conditioning room,On,S,Backup power battery string for critical loads,30.96,12.4,,,45.89,2026-03-29T10:00:00
+41,Demo UPS Panel 01,ups,UPS Room East,East power conditioning room,On,S,UPS distribution panel for rack clusters,22.69,226.97,1.95,49.91,45.08,2026-03-29T10:00:00
+42,Demo UPS Panel 02,ups,UPS Room West,West power conditioning room,On,S,UPS distribution panel for rack clusters,24.57,231.86,1.37,50.25,38.88,2026-03-29T10:00:00
+43,Demo UPS Panel 03,ups,UPS Room East,East power conditioning room,On,S,UPS distribution panel for rack clusters,21.11,229.34,1.6,50.29,48.3,2026-03-29T10:00:00
+44,Demo UPS Panel 04,ups,UPS Room West,West power conditioning room,On,S,UPS distribution panel for rack clusters,24.53,234.67,1.94,49.74,47.9,2026-03-29T10:00:00
+45,Demo UPS Panel 05,ups,UPS Room East,East power conditioning room,On,S,UPS distribution panel for rack clusters,27.19,224.93,1.65,49.95,49.2,2026-03-29T10:00:00
+46,Demo UPS Panel 06,ups,UPS Room West,West power conditioning room,On,S,UPS distribution panel for rack clusters,25.91,225.61,1.32,49.95,40.11,2026-03-29T10:00:00
+47,Demo Cooling Unit 01,cooling,Cooling Plant 1,Primary cooling plant,On,S,Cooling unit supporting datacenter air handling,27.01,224.43,1.13,49.92,47.19,2026-03-29T10:00:00
+48,Demo Cooling Unit 02,cooling,Cooling Plant 2,Secondary cooling plant,On,S,Cooling unit supporting datacenter air handling,28.31,235.02,1.2,50.07,41.22,2026-03-29T10:00:00
+49,Demo Cooling Unit 03,cooling,Cooling Plant 1,Primary cooling plant,Standby,S,Cooling unit supporting datacenter air handling,22.63,224.64,1.46,50.21,42.23,2026-03-29T10:00:00
+50,Demo Cooling Unit 04,cooling,Cooling Plant 2,Secondary cooling plant,On,S,Cooling unit supporting datacenter air handling,23.24,227.89,1.2,49.74,46.14,2026-03-29T10:00:00
+51,Demo Cooling Unit 05,cooling,Cooling Plant 1,Primary cooling plant,On,S,Cooling unit supporting datacenter air handling,27.49,231.72,1.71,49.72,39.55,2026-03-29T10:00:00
+52,Demo Cooling Unit 06,cooling,Cooling Plant 2,Secondary cooling plant,Standby,S,Cooling unit supporting datacenter air handling,26.64,230.95,1.67,49.73,45.47,2026-03-29T10:00:00
+53,Demo Network Core 01,network,Network Core,Core switching and routing area,On,S,Core switching fabric for east-west traffic,25.81,230.7,1.31,50.12,46.68,2026-03-29T10:00:00
+54,Demo Network Core 02,network,Network Core,Core switching and routing area,On,S,Core switching fabric for east-west traffic,26.14,225.08,1.91,49.95,42.87,2026-03-29T10:00:00
+55,Demo Network Core 03,network,Network Core,Core switching and routing area,On,S,Core switching fabric for east-west traffic,28.51,230.58,2.08,50.05,39.19,2026-03-29T10:00:00
+56,Demo Network Core 04,network,Network Core,Core switching and routing area,On,S,Core switching fabric for east-west traffic,22.4,225.94,1.26,50.22,49.08,2026-03-29T10:00:00
