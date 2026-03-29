@@ -1,0 +1,80 @@
+# ----------------------
+# Python
+# ----------------------
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py[cod]
+*.so
+
+# Virtual environments
+venv/
+.env/
+.env.*
+.venv/
+
+# ----------------------
+# Environment / secrets
+# ----------------------
+.env
+.env.local
+.env.*.local
+
+# ----------------------
+# Logs
+# ----------------------
+*.log
+logs/
+
+# ----------------------
+# Database
+# ----------------------
+*.db
+*.sqlite3
+
+# ----------------------
+# Data / exports (IMPORTANT for your case)
+# ----------------------
+*.csv
+*.xlsx
+*.json
+exports/
+tableau_csv/
+data/
+
+# ----------------------
+# ML / models (if you add later)
+# ----------------------
+*.pt
+*.pth
+*.bin
+
+# ----------------------
+# Docker
+# ----------------------
+*.pid
+*.sock
+
+# ----------------------
+# Build / cache
+# ----------------------
+build/
+dist/
+*.egg-info/
+.cache/
+.pytest_cache/
+
+
+# ----------------------
+# IDE / OS
+# ----------------------
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ----------------------
+# Jupyter (if used)
+# ----------------------
+.ipynb_checkpoints/
