@@ -1,7 +1,8 @@
-from fastapi import APIRouter, Request
+from fastapi import APIRouter, Depends, Request
 from fastapi.responses import RedirectResponse
 from fastapi.templating import Jinja2Templates
 from jose import jwt
+from app.core.auth_guard import require_user
 from app.core.security import SECRET_KEY
 
 router = APIRouter()
@@ -37,6 +38,19 @@ def register_page(request: Request):
         request,
         "register_public.html",
         {"request": request}
+    )
+
+
+@router.get("/tableau-dashboard")
+def tableau_dashboard(request: Request, user=Depends(require_user)):
+    return templates.TemplateResponse(
+        request,
+        "tableau_dashboard.html",
+        {
+            "request": request,
+            "user": user,
+            "tableau_public_url": "https://public.tableau.com/app/profile/rashi.gupta2443/viz/EmergingLab/Dashboard1",
+        },
     )
 
 @router.get("/logout")
