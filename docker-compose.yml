@@ -55,8 +55,13 @@ services:
     environment:
       DATABASE_URL: postgresql+psycopg2://postgres:postgres@db:5432/project
       TELEMETRY_API_KEY: local-telemetry-key
+      OLLAMA_URL: http://host.docker.internal:11434/api/generate
+      OLLAMA_MODEL: tinyllama
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     ports:
       - "8000:8000"
+
 
   telemetry-publisher:
     build:

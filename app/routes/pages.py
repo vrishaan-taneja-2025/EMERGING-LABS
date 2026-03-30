@@ -49,7 +49,7 @@ def tableau_dashboard(request: Request, user=Depends(require_user)):
         {
             "request": request,
             "user": user,
-            "tableau_public_url": "https://public.tableau.com/app/profile/rashi.gupta2443/viz/EmergingLab/Dashboard1",
+            "tableau_api_base": "/api/tableau",
         },
     )
 

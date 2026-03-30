@@ -48,6 +48,7 @@ def vector_health(user=Depends(require_user)):
 
     return {
         "provider": "faiss",
+        "embedding_backend": "fastembed",
         "embedding_model": vector_store.model_name,
         "count": vector_store.count(),
     }

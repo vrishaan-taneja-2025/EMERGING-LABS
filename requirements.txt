@@ -13,4 +13,4 @@ weasyprint
 kafka-python
 numpy
 faiss-cpu
-sentence-transformers
+fastembed

@@ -15,9 +15,9 @@ except ImportError:  # pragma: no cover
     faiss = None  # type: ignore
 
 try:
-    from sentence_transformers import SentenceTransformer
+    from fastembed import TextEmbedding
 except ImportError:  # pragma: no cover
-    SentenceTransformer = None  # type: ignore
+    TextEmbedding = None  # type: ignore
 
 
 class VectorStoreError(Exception):
@@ -31,7 +31,7 @@ class FaissVectorStore:
         index_path: str | None = None,
         metadata_path: str | None = None,
     ):
-        self.model_name = model_name or os.getenv("EMBEDDING_MODEL", "sentence-transformers/all-MiniLM-L6-v2")
+        self.model_name = model_name or os.getenv("EMBEDDING_MODEL", "BAAI/bge-small-en-v1.5")
         self.index_path = Path(index_path or os.getenv("VECTOR_INDEX_PATH", "app/data/vector.index"))
         self.metadata_path = Path(metadata_path or os.getenv("VECTOR_METADATA_PATH", "app/data/vector_metadata.json"))
 
@@ -52,17 +52,17 @@ class FaissVectorStore:
             return
         if np is None:
             raise VectorStoreError("numpy is not installed")
-        if SentenceTransformer is None:
-            raise VectorStoreError("sentence-transformers is not installed")
-        self._model = SentenceTransformer(self.model_name)
+        if TextEmbedding is None:
+            raise VectorStoreError("fastembed is not installed")
+        self._model = TextEmbedding(model_name=self.model_name)
 
     def _encode(self, texts: list[str]) -> np.ndarray:
         self._ensure_model()
-        vectors = self._model.encode(  # type: ignore[union-attr]
-            texts,
-            convert_to_numpy=True,
-            normalize_embeddings=True,
-        )
+        vectors = list(self._model.embed(texts))  # type: ignore[union-attr]
+        vectors = np.asarray(vectors, dtype=np.float32)
+        norms = np.linalg.norm(vectors, axis=1, keepdims=True)
+        norms[norms == 0] = 1.0
+        vectors = vectors / norms
         if vectors.ndim == 1:
             vectors = np.expand_dims(vectors, axis=0)
         return np.asarray(vectors, dtype=np.float32)

@@ -214,6 +214,24 @@
 {% endfor %}
 </div>
 
+<div class="fixed bottom-6 right-6 z-50">
+  <button id="chat-toggle" class="bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700">
+    Chat
+  </button>
+</div>
+
+<div id="chat-panel" class="hidden fixed bottom-24 right-6 w-80 bg-white shadow-xl rounded-lg border z-50">
+  <div class="flex items-center justify-between px-4 py-3 border-b">
+    <span class="font-semibold text-gray-900">Operations Chat</span>
+    <button id="chat-close" class="text-gray-400 hover:text-gray-600">x</button>
+  </div>
+  <div id="chat-messages" class="p-4 space-y-2 max-h-72 overflow-y-auto bg-gray-50"></div>
+  <div class="p-3 border-t flex gap-2">
+    <input id="chat-input" class="flex-1 border rounded px-3 py-2 text-sm" placeholder="Ask about anomalies, equipment, status..." />
+    <button id="chat-send" class="bg-blue-600 text-white px-3 py-2 rounded text-sm hover:bg-blue-700">Send</button>
+  </div>
+</div>
+
 <script>
 const dashboardCharts = {{ chart_data | tojson }};
 
@@ -350,9 +368,103 @@ async function refreshTelemetryDashboard() {
   items.forEach(applyTelemetryItem);
 }
 
+function appendChatMessage(container, message, isUser) {
+  const wrapper = document.createElement("div");
+  wrapper.className = `text-sm ${isUser ? "text-right" : "text-left"}`;
+
+  const bubble = document.createElement("div");
+  bubble.className = `inline-block px-3 py-2 rounded-lg ${isUser ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-800"}`;
+  bubble.innerText = message;
+
+  wrapper.appendChild(bubble);
+  container.appendChild(wrapper);
+  container.scrollTop = container.scrollHeight;
+}
+
+async function sendChatMessage(message) {
+  const response = await fetch("/chat", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message })
+  });
+
+  if (!response.ok) {
+    return { intent: "error", answer: "Chat service unavailable.", data: {} };
+  }
+
+  return response.json();
+}
+
+function formatChatResult(payload) {
+  if (!payload || !payload.intent) {
+    return "No response.";
+  }
+
+  if (payload.answer) {
+    return payload.answer;
+  }
+
+  if (payload.intent === "temperature_anomaly") {
+    const items = payload.data && payload.data.items ? payload.data.items : [];
+    if (items.length === 0) return "No recent temperature anomalies found.";
+    return items
+      .map(item => `${item.equipment_name}: ${item.temperature}C (${item.anomaly_message || "anomaly"})`)
+      .join("; ");
+  }
+
+  if (payload.intent === "semantic_search") {
+    const items = payload.data && payload.data.items ? payload.data.items : [];
+    if (items.length === 0) return "No matching items found.";
+    return items.map(item => item.text).join(" | ");
+  }
+
+  const answer = payload.data && payload.data.summary ? payload.data.summary : "Here are relevant results.";
+  return answer;
+}
+
+function initChatWidget() {
+  const toggleBtn = document.getElementById("chat-toggle");
+  const panel = document.getElementById("chat-panel");
+  const closeBtn = document.getElementById("chat-close");
+  const messages = document.getElementById("chat-messages");
+  const input = document.getElementById("chat-input");
+  const sendBtn = document.getElementById("chat-send");
+
+  if (!toggleBtn || !panel || !messages || !input || !sendBtn) return;
+
+  toggleBtn.addEventListener("click", () => {
+    panel.classList.toggle("hidden");
+    input.focus();
+  });
+
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => panel.classList.add("hidden"));
+  }
+
+  const handleSend = async () => {
+    const message = input.value.trim();
+    if (!message) return;
+    input.value = "";
+    appendChatMessage(messages, message, true);
+
+    const response = await sendChatMessage(message);
+    const formatted = formatChatResult(response);
+    appendChatMessage(messages, formatted, false);
+  };
+
+  sendBtn.addEventListener("click", handleSend);
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleSend();
+    }
+  });
+}
+
 renderCharts();
 refreshTelemetryDashboard();
 setInterval(refreshTelemetryDashboard, 5000);
+initChatWidget();
 </script>
 
 {% endblock %}
